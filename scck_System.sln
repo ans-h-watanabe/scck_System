@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "scck_App", "scck_App\scck_App.vbproj", "{408B42E0-993F-4F4F-9460-83E9146B2D27}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scck_Com", "scck_Com", "{09B93CFB-4684-4036-809A-0C719A5312A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{06B9208C-410E-4306-AE0C-3A13E0B3F2D3}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "cns_Com", "scck_Com\common\cns_Com\cns_Com.vbproj", "{B2352CD9-179E-43D9-817C-19B3D4E44AD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{408B42E0-993F-4F4F-9460-83E9146B2D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{408B42E0-993F-4F4F-9460-83E9146B2D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{408B42E0-993F-4F4F-9460-83E9146B2D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2352CD9-179E-43D9-817C-19B3D4E44AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2352CD9-179E-43D9-817C-19B3D4E44AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2352CD9-179E-43D9-817C-19B3D4E44AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2352CD9-179E-43D9-817C-19B3D4E44AD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{06B9208C-410E-4306-AE0C-3A13E0B3F2D3} = {09B93CFB-4684-4036-809A-0C719A5312A7}
+		{B2352CD9-179E-43D9-817C-19B3D4E44AD5} = {06B9208C-410E-4306-AE0C-3A13E0B3F2D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FEF65CE-FEB9-49B5-AAD7-0AE5B16BBA64}
