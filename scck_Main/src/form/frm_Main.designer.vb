@@ -101,6 +101,9 @@ Partial Class frm_Main
         Me.TileVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileHorizontalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.別窓で起動ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem27 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -120,9 +123,6 @@ Partial Class frm_Main
         Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem27 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -698,27 +698,43 @@ Partial Class frm_Main
         'CascadeToolStripMenuItem
         '
         Me.CascadeToolStripMenuItem.Name = "CascadeToolStripMenuItem"
-        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.CascadeToolStripMenuItem.Text = "重ねて表示(&C)"
         '
         'TileVerticalToolStripMenuItem
         '
         Me.TileVerticalToolStripMenuItem.Name = "TileVerticalToolStripMenuItem"
-        Me.TileVerticalToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TileVerticalToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.TileVerticalToolStripMenuItem.Text = "左右に並べて表示(&V)"
         '
         'TileHorizontalToolStripMenuItem
         '
         Me.TileHorizontalToolStripMenuItem.Name = "TileHorizontalToolStripMenuItem"
-        Me.TileHorizontalToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TileHorizontalToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.TileHorizontalToolStripMenuItem.Text = "上下に並べて表示(&H)"
         '
         '別窓で起動ToolStripMenuItem
         '
         Me.別窓で起動ToolStripMenuItem.Image = CType(resources.GetObject("別窓で起動ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.別窓で起動ToolStripMenuItem.Name = "別窓で起動ToolStripMenuItem"
-        Me.別窓で起動ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.別窓で起動ToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.別窓で起動ToolStripMenuItem.Text = "別窓で起動"
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(176, 6)
+        '
+        'ToolStripMenuItem27
+        '
+        Me.ToolStripMenuItem27.Name = "ToolStripMenuItem27"
+        Me.ToolStripMenuItem27.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem27.Text = "文字サイズの変更"
+        '
+        'ToolStripSeparator10
+        '
+        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
+        Me.ToolStripSeparator10.Size = New System.Drawing.Size(176, 6)
         '
         'ToolStrip
         '
@@ -923,22 +939,6 @@ Partial Class frm_Main
         Me.ToolStripButton4.Size = New System.Drawing.Size(273, 28)
         Me.ToolStripButton4.Text = " 非アクティブの画面"
         Me.ToolStripButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(177, 6)
-        '
-        'ToolStripMenuItem27
-        '
-        Me.ToolStripMenuItem27.Name = "ToolStripMenuItem27"
-        Me.ToolStripMenuItem27.Size = New System.Drawing.Size(180, 22)
-        Me.ToolStripMenuItem27.Text = "文字サイズの変更"
-        '
-        'ToolStripSeparator10
-        '
-        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        Me.ToolStripSeparator10.Size = New System.Drawing.Size(177, 6)
         '
         'frm_Main
         '

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm_Login
     Inherits System.Windows.Forms.Form
 
     'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Frm_Login
     'メモ: 以下のプロシージャは Windows フォーム デザイナーで必要です。
     'Windows フォーム デザイナーを使用して変更できます。  
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ThemeStateStyle1 As GrapeCity.Win.Components.ThemeStateStyle = New GrapeCity.Win.Components.ThemeStateStyle()
@@ -56,28 +56,40 @@ Partial Class Frm_Login
         Dim ListItem5 As GrapeCity.Win.Editors.ListItem = New GrapeCity.Win.Editors.ListItem()
         Dim SubItem5 As GrapeCity.Win.Editors.SubItem = New GrapeCity.Win.Editors.SubItem()
         Dim ThemeStateStyle21 As GrapeCity.Win.Components.ThemeStateStyle = New GrapeCity.Win.Components.ThemeStateStyle()
+        Dim DateYearDisplayField1 As GrapeCity.Win.Editors.Fields.DateYearDisplayField = New GrapeCity.Win.Editors.Fields.DateYearDisplayField()
+        Dim DateLiteralDisplayField1 As GrapeCity.Win.Editors.Fields.DateLiteralDisplayField = New GrapeCity.Win.Editors.Fields.DateLiteralDisplayField()
+        Dim DateMonthDisplayField1 As GrapeCity.Win.Editors.Fields.DateMonthDisplayField = New GrapeCity.Win.Editors.Fields.DateMonthDisplayField()
+        Dim DateLiteralDisplayField2 As GrapeCity.Win.Editors.Fields.DateLiteralDisplayField = New GrapeCity.Win.Editors.Fields.DateLiteralDisplayField()
+        Dim DateDayDisplayField1 As GrapeCity.Win.Editors.Fields.DateDayDisplayField = New GrapeCity.Win.Editors.Fields.DateDayDisplayField()
+        Dim DateYearField1 As GrapeCity.Win.Editors.Fields.DateYearField = New GrapeCity.Win.Editors.Fields.DateYearField()
+        Dim DateLiteralField1 As GrapeCity.Win.Editors.Fields.DateLiteralField = New GrapeCity.Win.Editors.Fields.DateLiteralField()
+        Dim DateMonthField1 As GrapeCity.Win.Editors.Fields.DateMonthField = New GrapeCity.Win.Editors.Fields.DateMonthField()
+        Dim DateLiteralField2 As GrapeCity.Win.Editors.Fields.DateLiteralField = New GrapeCity.Win.Editors.Fields.DateLiteralField()
+        Dim DateDayField1 As GrapeCity.Win.Editors.Fields.DateDayField = New GrapeCity.Win.Editors.Fields.DateDayField()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Login))
         Me.LBL_ユーザーID = New System.Windows.Forms.Label()
         Me.GcShortcut1 = New GrapeCity.Win.Editors.GcShortcut(Me.components)
         Me.TXT_ユーザーID = New GrapeCity.Win.Editors.GcNumber(Me.components)
         Me.DropDownButton1 = New GrapeCity.Win.Editors.DropDownButton()
-        Me.GcNumberValidator1 = New GrapeCity.Win.Editors.GcNumberValidator()
         Me.DSP_ユーザー名 = New GrapeCity.Win.Editors.GcTextBox(Me.components)
-        Me.LBL_パスワード = New System.Windows.Forms.Label()
         Me.TXT_パスワード = New GrapeCity.Win.Editors.GcTextBox(Me.components)
-        Me.LBL_事業所コード = New System.Windows.Forms.Label()
         Me.TXT_事業所コード = New GrapeCity.Win.Editors.GcNumber(Me.components)
         Me.DropDownButton2 = New GrapeCity.Win.Editors.DropDownButton()
         Me.DSP_事業所名 = New GrapeCity.Win.Editors.GcTextBox(Me.components)
         Me.CMB_ユーザパターン = New GrapeCity.Win.Editors.GcComboBox(Me.components)
         Me.DropDownButton3 = New GrapeCity.Win.Editors.DropDownButton()
-        Me.LBL_ユーザパターン = New System.Windows.Forms.Label()
         Me.GcComboBox2 = New GrapeCity.Win.Editors.GcComboBox(Me.components)
         Me.DropDownButton4 = New GrapeCity.Win.Editors.DropDownButton()
+        Me.GcNumberValidator1 = New GrapeCity.Win.Editors.GcNumberValidator()
+        Me.LBL_パスワード = New System.Windows.Forms.Label()
+        Me.LBL_事業所コード = New System.Windows.Forms.Label()
+        Me.LBL_ユーザパターン = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.BTN_認証 = New GrapeCity.Win.Buttons.GcButton()
         Me.GcStylePlus1 = New GrapeCity.Win.Components.GcStylePlus()
         Me.BTN_閉じる = New GrapeCity.Win.Buttons.GcButton()
+        Me.DropDownButton5 = New GrapeCity.Win.Editors.DropDownButton()
+        Me.GcDate1 = New GrapeCity.Win.Editors.GcDate(Me.components)
         CType(Me.TXT_ユーザーID, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DSP_ユーザー名, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TXT_パスワード, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,6 +97,7 @@ Partial Class Frm_Login
         CType(Me.DSP_事業所名, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CMB_ユーザパターン, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GcComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GcDate1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LBL_ユーザーID
@@ -154,6 +167,7 @@ Partial Class Frm_Login
         Me.DSP_ユーザー名.AutoConvert = False
         Me.DSP_ユーザー名.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.DSP_ユーザー名.ContentAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.DSP_ユーザー名.Cursor = System.Windows.Forms.Cursors.Default
         Me.DSP_ユーザー名.DisabledBackColor = System.Drawing.SystemColors.Info
         Me.DSP_ユーザー名.DisabledForeColor = System.Drawing.SystemColors.WindowText
         ThemeStateStyle5.BackColor = System.Drawing.SystemColors.Info
@@ -167,23 +181,14 @@ Partial Class Frm_Login
         Me.DSP_ユーザー名.Name = "DSP_ユーザー名"
         Me.DSP_ユーザー名.Padding = New System.Windows.Forms.Padding(3, 1, 1, 1)
         Me.DSP_ユーザー名.ReadOnly = True
+        Me.DSP_ユーザー名.ReadOnlyBackColor = System.Drawing.SystemColors.Info
+        Me.DSP_ユーザー名.ReadOnlyForeColor = System.Drawing.SystemColors.WindowText
         ThemeStateStyle6.BackColor = System.Drawing.SystemColors.Info
         ThemeStateStyle6.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
         Me.GcStylePlus1.SetReadOnlyStyle(Me.DSP_ユーザー名, ThemeStateStyle6)
         Me.GcShortcut1.SetShortcuts(Me.DSP_ユーザー名, New GrapeCity.Win.Editors.ShortcutCollection(New System.Windows.Forms.Keys() {System.Windows.Forms.Keys.[Return], CType((System.Windows.Forms.Keys.Shift Or System.Windows.Forms.Keys.[Return]), System.Windows.Forms.Keys)}, New Object() {CType(Me.GcShortcut1, Object), CType(Me.GcShortcut1, Object)}, New String() {"NextControl", "PreviousControl"}))
         Me.DSP_ユーザー名.Size = New System.Drawing.Size(262, 32)
         Me.DSP_ユーザー名.TabIndex = 1
-        '
-        'LBL_パスワード
-        '
-        Me.LBL_パスワード.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
-        Me.LBL_パスワード.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LBL_パスワード.Location = New System.Drawing.Point(23, 57)
-        Me.LBL_パスワード.Name = "LBL_パスワード"
-        Me.LBL_パスワード.Size = New System.Drawing.Size(79, 32)
-        Me.LBL_パスワード.TabIndex = 21
-        Me.LBL_パスワード.Text = "パスワード"
-        Me.LBL_パスワード.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TXT_パスワード
         '
@@ -213,17 +218,6 @@ Partial Class Frm_Login
         Me.GcShortcut1.SetShortcuts(Me.TXT_パスワード, New GrapeCity.Win.Editors.ShortcutCollection(New System.Windows.Forms.Keys() {System.Windows.Forms.Keys.[Return], CType((System.Windows.Forms.Keys.Shift Or System.Windows.Forms.Keys.[Return]), System.Windows.Forms.Keys)}, New Object() {CType(Me.GcShortcut1, Object), CType(Me.GcShortcut1, Object)}, New String() {"NextControl", "PreviousControl"}))
         Me.TXT_パスワード.Size = New System.Drawing.Size(325, 32)
         Me.TXT_パスワード.TabIndex = 2
-        '
-        'LBL_事業所コード
-        '
-        Me.LBL_事業所コード.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
-        Me.LBL_事業所コード.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LBL_事業所コード.Location = New System.Drawing.Point(12, 91)
-        Me.LBL_事業所コード.Name = "LBL_事業所コード"
-        Me.LBL_事業所コード.Size = New System.Drawing.Size(90, 32)
-        Me.LBL_事業所コード.TabIndex = 23
-        Me.LBL_事業所コード.Text = "事業所コード"
-        Me.LBL_事業所コード.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TXT_事業所コード
         '
@@ -281,6 +275,7 @@ Partial Class Frm_Login
         Me.DSP_事業所名.AutoConvert = False
         Me.DSP_事業所名.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.DSP_事業所名.ContentAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.DSP_事業所名.Cursor = System.Windows.Forms.Cursors.Default
         Me.DSP_事業所名.DisabledBackColor = System.Drawing.SystemColors.Info
         Me.DSP_事業所名.DisabledForeColor = System.Drawing.SystemColors.WindowText
         ThemeStateStyle14.BackColor = System.Drawing.SystemColors.Info
@@ -294,6 +289,8 @@ Partial Class Frm_Login
         Me.DSP_事業所名.Name = "DSP_事業所名"
         Me.DSP_事業所名.Padding = New System.Windows.Forms.Padding(3, 1, 1, 1)
         Me.DSP_事業所名.ReadOnly = True
+        Me.DSP_事業所名.ReadOnlyBackColor = System.Drawing.SystemColors.Info
+        Me.DSP_事業所名.ReadOnlyForeColor = System.Drawing.SystemColors.WindowText
         ThemeStateStyle15.BackColor = System.Drawing.SystemColors.Info
         ThemeStateStyle15.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
         Me.GcStylePlus1.SetReadOnlyStyle(Me.DSP_事業所名, ThemeStateStyle15)
@@ -325,6 +322,7 @@ Partial Class Frm_Login
         Me.CMB_ユーザパターン.Items.AddRange(New GrapeCity.Win.Editors.ListItem() {ListItem1, ListItem2})
         Me.CMB_ユーザパターン.ListDisabledItemStyle.BackColor = System.Drawing.SystemColors.Info
         Me.CMB_ユーザパターン.ListDisabledItemStyle.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.CMB_ユーザパターン.ListHeaderPane.Height = 26
         Me.CMB_ユーザパターン.Location = New System.Drawing.Point(103, 125)
         Me.CMB_ユーザパターン.Name = "CMB_ユーザパターン"
         Me.CMB_ユーザパターン.Padding = New System.Windows.Forms.Padding(5, 1, 1, 1)
@@ -334,23 +332,13 @@ Partial Class Frm_Login
         Me.GcShortcut1.SetShortcuts(Me.CMB_ユーザパターン, New GrapeCity.Win.Editors.ShortcutCollection(New System.Windows.Forms.Keys() {System.Windows.Forms.Keys.[Return], CType((System.Windows.Forms.Keys.Shift Or System.Windows.Forms.Keys.[Return]), System.Windows.Forms.Keys)}, New Object() {CType(Me.GcShortcut1, Object), CType(Me.GcShortcut1, Object)}, New String() {"NextControl", "PreviousControl"}))
         Me.CMB_ユーザパターン.SideButtons.AddRange(New GrapeCity.Win.Editors.SideButtonBase() {Me.DropDownButton3})
         Me.CMB_ユーザパターン.Size = New System.Drawing.Size(325, 32)
+        Me.CMB_ユーザパターン.StatusBar.Text = "1 パターン①"
         Me.CMB_ユーザパターン.TabIndex = 5
         Me.CMB_ユーザパターン.Text = "1 パターン①"
         '
         'DropDownButton3
         '
         Me.DropDownButton3.Name = "DropDownButton3"
-        '
-        'LBL_ユーザパターン
-        '
-        Me.LBL_ユーザパターン.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
-        Me.LBL_ユーザパターン.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LBL_ユーザパターン.Location = New System.Drawing.Point(12, 125)
-        Me.LBL_ユーザパターン.Name = "LBL_ユーザパターン"
-        Me.LBL_ユーザパターン.Size = New System.Drawing.Size(90, 32)
-        Me.LBL_ユーザパターン.TabIndex = 27
-        Me.LBL_ユーザパターン.Text = "ユーザパターン"
-        Me.LBL_ユーザパターン.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'GcComboBox2
         '
@@ -388,12 +376,46 @@ Partial Class Frm_Login
         Me.GcShortcut1.SetShortcuts(Me.GcComboBox2, New GrapeCity.Win.Editors.ShortcutCollection(New System.Windows.Forms.Keys() {System.Windows.Forms.Keys.[Return], CType((System.Windows.Forms.Keys.Shift Or System.Windows.Forms.Keys.[Return]), System.Windows.Forms.Keys)}, New Object() {CType(Me.GcShortcut1, Object), CType(Me.GcShortcut1, Object)}, New String() {"NextControl", "PreviousControl"}))
         Me.GcComboBox2.SideButtons.AddRange(New GrapeCity.Win.Editors.SideButtonBase() {Me.DropDownButton4})
         Me.GcComboBox2.Size = New System.Drawing.Size(325, 32)
+        Me.GcComboBox2.StatusBar.Text = "1 本番環境"
         Me.GcComboBox2.TabIndex = 6
         Me.GcComboBox2.Text = "1 本番環境"
         '
         'DropDownButton4
         '
         Me.DropDownButton4.Name = "DropDownButton4"
+        '
+        'LBL_パスワード
+        '
+        Me.LBL_パスワード.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
+        Me.LBL_パスワード.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LBL_パスワード.Location = New System.Drawing.Point(23, 57)
+        Me.LBL_パスワード.Name = "LBL_パスワード"
+        Me.LBL_パスワード.Size = New System.Drawing.Size(79, 32)
+        Me.LBL_パスワード.TabIndex = 21
+        Me.LBL_パスワード.Text = "パスワード"
+        Me.LBL_パスワード.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LBL_事業所コード
+        '
+        Me.LBL_事業所コード.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
+        Me.LBL_事業所コード.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LBL_事業所コード.Location = New System.Drawing.Point(12, 91)
+        Me.LBL_事業所コード.Name = "LBL_事業所コード"
+        Me.LBL_事業所コード.Size = New System.Drawing.Size(90, 32)
+        Me.LBL_事業所コード.TabIndex = 23
+        Me.LBL_事業所コード.Text = "事業所コード"
+        Me.LBL_事業所コード.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LBL_ユーザパターン
+        '
+        Me.LBL_ユーザパターン.Font = New System.Drawing.Font("Yu Gothic UI", 10.0!)
+        Me.LBL_ユーザパターン.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LBL_ユーザパターン.Location = New System.Drawing.Point(12, 125)
+        Me.LBL_ユーザパターン.Name = "LBL_ユーザパターン"
+        Me.LBL_ユーザパターン.Size = New System.Drawing.Size(90, 32)
+        Me.LBL_ユーザパターン.TabIndex = 27
+        Me.LBL_ユーザパターン.Text = "ユーザパターン"
+        Me.LBL_ユーザパターン.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label7
         '
@@ -426,11 +448,36 @@ Partial Class Frm_Login
         Me.BTN_閉じる.Text = "閉じる"
         Me.BTN_閉じる.UseVisualStyleBackColor = True
         '
+        'DropDownButton5
+        '
+        Me.DropDownButton5.Name = "DropDownButton5"
+        '
+        'GcDate1
+        '
+        DateYearDisplayField1.ShowLeadingZero = True
+        DateYearDisplayField1.YearDigit = GrapeCity.Win.Editors.YearDigitType.TwoDigitYear
+        DateLiteralDisplayField1.Text = "/"
+        DateMonthDisplayField1.ShowLeadingZero = True
+        DateLiteralDisplayField2.Text = "/"
+        DateDayDisplayField1.ShowLeadingZero = True
+        Me.GcDate1.DisplayFields.AddRange(New GrapeCity.Win.Editors.Fields.DateDisplayField() {DateYearDisplayField1, DateLiteralDisplayField1, DateMonthDisplayField1, DateLiteralDisplayField2, DateDayDisplayField1})
+        DateLiteralField1.Text = "/"
+        DateLiteralField2.Text = "/"
+        Me.GcDate1.Fields.AddRange(New GrapeCity.Win.Editors.Fields.DateField() {DateYearField1, DateLiteralField1, DateMonthField1, DateLiteralField2, DateDayField1})
+        Me.GcDate1.Location = New System.Drawing.Point(458, 149)
+        Me.GcDate1.Name = "GcDate1"
+        Me.GcShortcut1.SetShortcuts(Me.GcDate1, New GrapeCity.Win.Editors.ShortcutCollection(New System.Windows.Forms.Keys() {System.Windows.Forms.Keys.F2, System.Windows.Forms.Keys.F5, CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.[Return]), System.Windows.Forms.Keys)}, New Object() {CType(Me.GcDate1, Object), CType(Me.GcDate1, Object), CType(Me.GcDate1, Object)}, New String() {"ShortcutClear", "SetNow", "ApplyRecommendedValue"}))
+        Me.GcDate1.SideButtons.AddRange(New GrapeCity.Win.Editors.SideButtonBase() {Me.DropDownButton5})
+        Me.GcDate1.Size = New System.Drawing.Size(120, 20)
+        Me.GcDate1.TabIndex = 30
+        Me.GcDate1.Value = New Date(2018, 3, 12, 0, 0, 0, 0)
+        '
         'Frm_Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(586, 221)
+        Me.Controls.Add(Me.GcDate1)
         Me.Controls.Add(Me.BTN_閉じる)
         Me.Controls.Add(Me.BTN_認証)
         Me.Controls.Add(Me.Label7)
@@ -456,6 +503,7 @@ Partial Class Frm_Login
         CType(Me.DSP_事業所名, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CMB_ユーザパターン, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GcComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GcDate1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -480,4 +528,6 @@ Partial Class Frm_Login
     Friend WithEvents BTN_認証 As GrapeCity.Win.Buttons.GcButton
     Friend WithEvents GcStylePlus1 As GrapeCity.Win.Components.GcStylePlus
     Friend WithEvents BTN_閉じる As GrapeCity.Win.Buttons.GcButton
+    Friend WithEvents DropDownButton5 As GrapeCity.Win.Editors.DropDownButton
+    Friend WithEvents GcDate1 As GrapeCity.Win.Editors.GcDate
 End Class

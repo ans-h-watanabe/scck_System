@@ -1,7 +1,9 @@
-GrapeCity.Win.Editors.GcNumber, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
+GrapeCity.Win.Editors.GcDate, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
 GrapeCity.Win.Editors.GcTextBox, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
-GrapeCity.Win.Editors.GcNumberValidator, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
-GrapeCity.Win.Editors.GcComboBox, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
-GrapeCity.Win.Components.GcStylePlus, GrapeCity.Win.PlusPak.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=63a9ba12b6923243
+GrapeCity.ActiveReports.SectionReport, GrapeCity.ActiveReports.v11, Version=11.2.11262.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff
 GrapeCity.Win.Buttons.GcButton, GrapeCity.Win.PlusPak.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=63a9ba12b6923243
+GrapeCity.Win.Editors.GcNumber, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
+GrapeCity.Win.Editors.GcComboBox, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
 GrapeCity.Win.Editors.GcShortcut, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
+GrapeCity.Win.Components.GcStylePlus, GrapeCity.Win.PlusPak.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=63a9ba12b6923243
+GrapeCity.Win.Editors.GcNumberValidator, GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12

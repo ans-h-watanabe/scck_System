@@ -47,6 +47,12 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GrapeCity.ActiveReports.ArsClient.v11, Version=11.2.11262.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Document.v11, Version=11.2.11262.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Image.v11, Version=11.2.11262.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Extensibility.v11, Version=11.2.11262.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.v11, Version=11.2.11262.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Viewer.Win.v11, Version=11.2.11262.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.Framework.InputMan.v24, Version=2.4.4001.2012, Culture=neutral, PublicKeyToken=fdd90f5c44b73170" />
     <Reference Include="GrapeCity.Framework.PlusPak.v24, Version=2.4.4001.2012, Culture=neutral, PublicKeyToken=fdd90f5c44b73170" />
     <Reference Include="GrapeCity.Win.Editors.v100, Version=10.0.4001.2012, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12, processorArchitecture=MSIL" />
@@ -78,10 +84,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\form\frm_M001.designer.vb">
-      <DependentUpon>frm_M001.vb</DependentUpon>
+    <Compile Include="src\form\frm_M002_ins.designer.vb">
+      <DependentUpon>frm_M002_ins.vb</DependentUpon>
     </Compile>
-    <Compile Include="src\form\frm_M001.vb">
+    <Compile Include="src\form\frm_M002_ins.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\form\frm_Main.designer.vb">
@@ -107,8 +113,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="src\form\frm_M001.resx">
-      <DependentUpon>frm_M001.vb</DependentUpon>
+    <EmbeddedResource Include="src\form\frm_M002_ins.resx">
+      <DependentUpon>frm_M002_ins.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\frm_Main.resx">
       <DependentUpon>frm_Main.vb</DependentUpon>
@@ -136,7 +142,11 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="src\image\active.png" />
+    <Content Include="src\image\company.png" />
+    <Content Include="src\image\confirm.png" />
+    <Content Include="src\image\error.png" />
     <Content Include="src\image\passive.png" />
+    <Content Include="src\image\warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
