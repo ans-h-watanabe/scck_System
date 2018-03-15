@@ -117,48 +117,48 @@ Public Class utl_Com
     Public Shared P_FRM_LCN As System.Drawing.Point
     Public Shared P_EXC_TBL As New DataTable
     Public Shared P_EXC_DAT As New DataSet
-    Public Shared P_MNU_TBL As New DataTable 'ﾒﾆｭｰ情報
-    Public Shared P_LVL_TBL As New DataTable '機能別運用権限情報
+    Public Shared P_MNU_TBL As New DataTable     'ﾒﾆｭｰ情報
+    Public Shared P_LVL_TBL As New DataTable     '機能別運用権限情報
     Public Shared P_USE_LVL(7) As Integer
-    Public Shared C_HST_NAM As String 'ﾎｽﾄ名
-    Public Shared C_USR_PMN As Boolean = False '認証許可
+    Public Shared C_HST_NAM As String            'ﾎｽﾄ名
+    Public Shared C_USR_PMN As Boolean = False   '認証許可
     '
     '[処理事業所情報]
     '
-    Public Shared C_COM_COD As Integer    '事業所コード
-    Public Shared C_COM_NAM As String     '事業所名
-    Public Shared C_COM_NAM_SRT As String '事業所名略称
+    Public Shared C_COM_COD As Integer           '事業所コード
+    Public Shared C_COM_NAM As String            '事業所名
+    Public Shared C_COM_NAM_SRT As String        '事業所名略称
     '
     '[ﾕｰｻﾞｰ情報]
     '
-    Public Shared C_USR_IDS As Long           'ユーザーID
-    Public Shared C_USR_NAM As String         'ユーザー名
-    Public Shared C_USR_NAM_SRT As String     'ユーザー名略称
-    Public Shared C_PRT_COD As Integer        '部コード
-    Public Shared C_PRT_NAM As String         '部名    
-    Public Shared C_BNC_COD As Integer        '支社コード(ユーザー所属)
-    Public Shared C_BNC_NAM As String         '支社名(ユーザー所属)
-    Public Shared C_BNC_NAM_SRT As String     '支社名略称(ユーザー所属)
-    Public Shared C_USR_DIV As Integer        'ユーザー区分
-    Public Shared C_USR_DIV_NAM As String     'ユーザー区分名
-    Public Shared C_USE_PRT_COD As Integer    '運用部署区分
-    Public Shared C_USE_PRT_NAM As String     '運用部署名
-    Public Shared C_ACC_POD As Integer        '決算期
+    Public Shared C_USR_IDS As Long              'ユーザーID
+    Public Shared C_USR_NAM As String            'ユーザー名
+    Public Shared C_USR_NAM_SRT As String        'ユーザー名略称
+    Public Shared C_PRT_COD As Integer           '部コード
+    Public Shared C_PRT_NAM As String            '部名    
+    Public Shared C_BNC_COD As Integer           '支社コード(ユーザー所属)
+    Public Shared C_BNC_NAM As String            '支社名(ユーザー所属)
+    Public Shared C_BNC_NAM_SRT As String        '支社名略称(ユーザー所属)
+    Public Shared C_USR_DIV As Integer           'ユーザー区分
+    Public Shared C_USR_DIV_NAM As String        'ユーザー区分名
+    Public Shared C_USE_PRT_COD As Integer       '運用部署区分
+    Public Shared C_USE_PRT_NAM As String        '運用部署名
+    Public Shared C_ACC_POD As Integer           '決算期
     '
-    'Public Shared C_EMP_COD As Long           '社員コード
-    'Public Shared C_EMP_NAM As String         '社員名
+    'Public Shared C_EMP_COD As Long             '社員コード
+    'Public Shared C_EMP_NAM As String           '社員名
     '
     '端末情報
-    Public Shared C_TMA_IPS As String  '端末IPｱﾄﾞﾚｽ
-    Public Shared C_TMA_NAM As String  '端末名
-    Public Shared C_ICO_FIL(6) As String 'ｱｲｺﾝﾌｧｲﾙ名
-    Public Shared C_PCT_FIL(6) As String '印鑑ﾌｧｲﾙ名
+    Public Shared C_TMA_IPS As String            '端末IPｱﾄﾞﾚｽ
+    Public Shared C_TMA_NAM As String            '端末名
+    Public Shared C_ICO_FIL(6) As String         'ｱｲｺﾝﾌｧｲﾙ名
+    Public Shared C_PCT_FIL(6) As String         '印鑑ﾌｧｲﾙ名
     Public Shared P_FRM_WIT As New frm_Wait("")
     '
     '[検索ﾃﾞｰﾀﾌﾟｰﾙ処理]
     '
     Public Shared P_FND_TBL As New DataTable
-    Public Shared P_FND_IDX As Integer 'ｶﾚﾝﾄINDEX
+    Public Shared P_FND_IDX As Integer           'ｶﾚﾝﾄINDEX
     Public Shared C_FND_CNT_1 As Integer = 300
     Public Shared C_FND_CNT_BIG As Integer = 3000
     Public Shared C_FND_CNT_2 As Integer = 30

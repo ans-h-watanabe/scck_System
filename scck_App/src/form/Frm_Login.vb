@@ -27,8 +27,8 @@
 '*
 '*************************************************************************************************************
 Public Class Frm_Login
-    Private Sub BTN_認証_Click(sender As Object, e As EventArgs) Handles BTN_認証.Click
-        System.Diagnostics.Debug.WriteLine(GcDate1.Text)
+    Private Sub BTN_認証_Click(sender As Object, e As EventArgs)
+
     End Sub
 
 #Region "■ItemCode■"

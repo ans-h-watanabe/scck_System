@@ -6,7 +6,7 @@ Public Class frm_Main
             Dim intCnt As Integer = 0
 
 
-            Dim NewMDIChild As New frm_M002_ins
+            Dim NewMDIChild As New frm_M002_fnd
             NewMDIChild.MdiParent = Me
 
             NewMDIChild.Show()

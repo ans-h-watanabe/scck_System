@@ -2,11 +2,23 @@
 '*
 '*  処理概要：待機ﾒｯｾｰｼﾞ表示
 '*
+'*  作成日　：2018/02/01
+'*  作成者　：渡辺      1.基幹システム更改
+'*
+'*  更新日　：
+'*  更新者　：
+'*  更新内容：
+'*
+#Region " 旧履歴 "
+
 '*  作成日　：2005/05/01
 '*  作成者　：Ans赤沢(博)
 '*
 '*  更新日　：
 '*  更新者　：
+
+#End Region
+'*
 '*
 '*************************************************************************************************************
 Public Class frm_Wait
@@ -29,7 +41,7 @@ Public Class frm_Wait
         '
         ' InitializeComponent() 呼び出しの後に初期化を追加します。
         '
-        lbl_Msg.Text = P1
+        LBL_Msg.Text = P1
     End Sub
 
     '*********************************************************************************************************
@@ -43,7 +55,7 @@ Public Class frm_Wait
     '*********************************************************************************************************
     Public Sub FNC_SET_MSG(ByVal P1 As String)
         Try
-            lbl_Msg.Text = P1
+            LBL_Msg.Text = P1
             '
             System.Windows.Forms.Application.DoEvents()
         Catch ex As Exception
@@ -95,7 +107,7 @@ EXIT_FUNTION:
         End Try
     End Sub
 
-    Private Sub BTN_HID_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_HID.Click
+    Private Sub BTN_HID_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_HID.Click
         '
         Try
             Me.Hide()

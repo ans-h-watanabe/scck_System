@@ -1,0 +1,1465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>GrapeCity.Win.FunctionKey.v100</name>
+  </assembly>
+  <members>
+    <member name="T:GrapeCity.Win.Bars.ActiveFlatStyleSet">
+      <summary>
+			ActiveFlatStyleSetクラスは、コントロールで使用するOffice形式のフラットな描画スタイルを設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ActiveFlatStyleSet.#ctor">
+      <summary>
+			ActiveFlatStyleSetクラスの新しいインスタンスを初期化します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ActiveFlatStyleSet.#ctor(GrapeCity.Win.Bars.AlignHorizontal,GrapeCity.Win.Bars.AlignVertical,System.Drawing.Color,System.Drawing.Font,System.Drawing.Color,GrapeCity.Win.Bars.ImagePosition,System.Int32,GrapeCity.Win.Common.Margins,GrapeCity.Win.Common.TextEffect,System.Boolean)">
+      <summary>
+        <see cref="T:GrapeCity.Win.Bars.ActiveFlatStyleSet" /> クラスの新しいインスタンスを初期化します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ActiveFlatStyleSet.ToString">
+      <summary>
+			ActiveFlatStyleSetオブジェクトを表す文字列を戻します。
+			</summary>
+      <returns>クラス名を示す <b>string</b>。</returns>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.AlignHorizontal">
+      <summary>画像とキャプションの水平方向の配置を指定します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignHorizontal.Center">
+      <summary>画像とキャプションを中央揃えにします。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignHorizontal.Left">
+      <summary>画像とキャプションを左揃えにします。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignHorizontal.NotSet">
+      <summary>未設定の状態です。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignHorizontal.Right">
+      <summary>画像とキャプションを右揃えにします。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.AlignVertical">
+      <summary>画像とキャプションの垂直方向の配置を指定します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignVertical.Bottom">
+      <summary>画像とキャプションを下揃えにします。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignVertical.Middle">
+      <summary>画像とキャプションを中央揃えにします。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignVertical.NotSet">
+      <summary>未設定の状態です。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.AlignVertical.Top">
+      <summary>画像とキャプションを上揃えにします。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.BaseKeyCollection">
+      <summary>BaseKeyCollectionは、キーと値を組とするコレクションを提供する基本クラスです。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.#ctor">
+      <summary>
+        <see cref="T:GrapeCity.Win.Bars.BaseKeyCollection" /> クラスの新しいインスタンスを初期化します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.Add(System.String,System.Object)">
+      <summary>指定したキーと値を持つ要素を <b>BaseKeyCollection</b> の末尾に追加します。</summary>
+      <param name="key">追加する要素のキー。</param>
+      <param name="value">追加する要素の値。</param>
+      <returns>
+        <b>BaseKeyCollection</b> に追加された項目のインデックス。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.AddRange(System.String[],System.Object[])">
+      <summary>キーと値のペアを表す配列の要素を <b>BaseKeyCollection</b> の末尾に追加します。</summary>
+      <param name="keys">キーと値のペアのキーを要素として持つ文字列の配列。</param>
+      <param name="values">キーと値のペアの値を要素として持つ Object の配列。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.Clear">
+      <summary>コレクション内の要素をすべて削除します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.Contains(System.Object)">
+      <summary>BaseKeyCollectionコレクション内に項目があるかどうかを取得します。</summary>
+      <param name="value">BaseKeyCollectionコレクション内で検索する項目</param>
+      <returns>
+			Trueの場合、BaseKeyCollectionコレクション内に項目が存在します。Falseの場合、BaseKeyCollectionコレクション内に項目が存在しません。
+			</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.ContainsKey(System.String)">
+      <summary>指定したキーを含む値がコレクションに含まれるかどうかを示す値を返します。</summary>
+      <param name="key">キー</param>
+      <returns>trueまたはfalse</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.ContainsValue(System.Object)">
+      <summary>指定した値を含む値がコレクションに含まれるかどうかを示す値を返します。</summary>
+      <param name="value">値</param>
+      <returns>trueまたはfalse</returns>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseKeyCollection.Count">
+      <summary>項目の個数を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.Dispose">
+      <summary>BaseKeyCollectionによって使われているリソースを解放します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.GetKey(System.Int32)">
+      <summary>コレクション内の特定のインデックスから項目のキーを取得します。</summary>
+      <param name="index">項目のインデックス</param>
+      <returns>
+			有効なインデックスの場合は要素のキー、無効なインデックスの場合は空の文字列
+			</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.IndexOf(System.Object)">
+      <summary>インデックスからキーを取得します。</summary>
+      <param name="value">値</param>
+      <returns>インデックス</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.IndexOf(System.String)">
+      <summary>インデックスからキーを取得します。</summary>
+      <param name="key">
+        <b>BaseKeyCollection</b> 内で検索する要素のキー。</param>
+      <returns>インデックス</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.Insert(System.Int32,System.String,System.Object)">
+      <summary>項目をコレクションに挿入します。</summary>
+      <param name="index">項目</param>
+      <param name="key">キー</param>
+      <param name="value">値</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseKeyCollection.Item(System.Int32)">
+      <summary>項目を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseKeyCollection.Item(System.String)">
+      <summary>指定したキーを持つ要素を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseKeyCollection.ItemList">
+      <summary>
+        <b>BaseKeyCollection</b> インスタンス内の要素のリストを含む ICollection を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseKeyCollection.Keys">
+      <summary>キーの文字列を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.Remove(System.String)">
+      <summary>指定したキーの項目をコレクションから削除します。</summary>
+      <param name="key">削除する項目のキー</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseKeyCollection.RemoveAt(System.Int32)">
+      <summary>インデックスで指定した項目をコレクションから削除します。</summary>
+      <param name="index">削除の対象となる項目のインデックス</param>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.BaseStyleSet">
+      <summary>BaseStyleSetクラスは、StyleSetを形成する基本クラスです。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.#ctor">
+      <summary>BaseStyleSetクラスの新しいインスタンスを初期化します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.#ctor(GrapeCity.Win.Bars.AlignHorizontal,GrapeCity.Win.Bars.AlignVertical,System.Drawing.Color,System.Drawing.Font,System.Drawing.Color,GrapeCity.Win.Bars.ImagePosition,System.Int32,GrapeCity.Win.Common.Margins,GrapeCity.Win.Common.TextEffect,System.Boolean)">
+      <summary>コンストラクター。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.AlignHorizontal">
+      <summary>画像とキャプションの水平方向の配置を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.AlignVertical">
+      <summary>画像とキャプションの垂直方向の配置を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.BackColor">
+      <summary>StyleSetオブジェクトのボタンの背景色を取得または設定します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.Clone">
+      <summary>オブジェクトのクローンを作成します。</summary>
+      <returns>StyleSetオブジェクトのインスタンス</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.Dispose">
+      <summary>StyleSetクラスによって使われているリソースを解放します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.Dispose(System.Boolean)">
+      <summary>クラスを破棄します。</summary>
+      <param name="disposing">呼び出し元がファイナライザーではありません。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.Finalize">
+      <summary>ファイナライザー。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.Font">
+      <summary>キャプションのフォントを取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.ForeColor">
+      <summary>StyleSetで利用される文字色を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.ImagePosition">
+      <summary>キャプションに対する画像の相対的な配置を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.ImageSpacing">
+      <summary>画像とキャプションの間隔を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.Margins">
+      <summary>ボタン内の上下左右のマージンを取得または設定します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+      <summary>プロパティ変更イベントを発生させます。</summary>
+      <param name="e">プロパティ変更イベントのイベント引数。</param>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.BaseStyleSet.PropertyChanged">
+      <summary>StyleSetオブジェクトのプロパティが変更されたときに発生します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetAlignHorizontal">
+      <summary>AlignHorizontalプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetAlignVertical">
+      <summary>AlignVerticalプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetBackColor">
+      <summary>BackColorプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetFont">
+      <summary>Fontプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetForeColor">
+      <summary>ForeColorプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetImagePosition">
+      <summary>ImagePositionプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetImageSpacing">
+      <summary>ImagePositionプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetMargins">
+      <summary>Marginsプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetTextEffect">
+      <summary>TextEffectプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ResetWordWrap">
+      <summary>WordWrapプロパティを既定値に戻します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ShouldSerializeBackColor">
+      <summary>BackColor プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ShouldSerializeFont">
+      <summary>Font プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ShouldSerializeForeColor">
+      <summary>ForeColor プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.BaseStyleSet.ShouldSerializeMargins">
+      <summary>Margins プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.TextEffect">
+      <summary>キャプションに適用する3D効果を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.BaseStyleSet.WordWrap">
+      <summary>キャプションをワードラップして複数行で表示するかどうかを取得または設定します。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.ButtonKeys">
+      <summary>ファンクションキーのキーを指定します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.End">
+      <summary>Endキーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F1">
+      <summary>F1キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F10">
+      <summary>F10キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F11">
+      <summary>F11キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F12">
+      <summary>F12キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F2">
+      <summary>F2キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F3">
+      <summary>F3キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F4">
+      <summary>F4キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F5">
+      <summary>F5キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F6">
+      <summary>F6キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F7">
+      <summary>F7キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F8">
+      <summary>F8キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.F9">
+      <summary>F9キーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.Home">
+      <summary>Homeキーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.None">
+      <summary>「なし」を示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.PageDown">
+      <summary>PageDownキーを示します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ButtonKeys.PageUp">
+      <summary>PageUpキーを示します。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.ControlBase">
+      <summary>ビューシステムの共通の基本コントロール機能を提供します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.#ctor">
+      <summary>このコンストラクターは、<b>BaseControl</b> クラスの新しいインスタンスを初期化します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.ControlBase.AutoSize">
+      <summary>内容に合わせてコントロールのサイズを変更するかどうかを示す値を取得または設定します。</summary>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.ControlBase.AutoSizeChanged">
+      <summary>AutoSize プロパティの値が変更された場合に発生します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.GetPreferredSize(System.Drawing.Size)">
+      <summary>コントロールの最適なサイズを取得します。</summary>
+      <param name="proposedSize">最適なサイズ。</param>
+      <returns>コントロールのすべての内容を含む最適なサイズ。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnClick(System.EventArgs)">
+      <summary>System.Windows.Forms.Control.Click イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnDoubleClick(System.EventArgs)">
+      <summary>System.Windows.Forms.Control.DoubleClick イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnEnter(System.EventArgs)">
+      <summary>オーバーライド。コントロールイベントとビューシステムをリンクします。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnFontChanged(System.EventArgs)">
+      <summary>オーバーライド。FontChanged イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnHandleCreated(System.EventArgs)">
+      <summary>オーバーライド。HandleCreated イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnHandleDestroyed(System.EventArgs)">
+      <summary>オーバーライド。HandleDestroyed イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnLeave(System.EventArgs)">
+      <summary>オーバーライド。コントロールイベントとビューシステムをリンクします。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnMouseEnter(System.EventArgs)">
+      <summary>
+        <see cref="E:System.Windows.Forms.Control.MouseEnter" /> イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む <see cref="T:System.EventArgs" />。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnMouseLeave(System.EventArgs)">
+      <summary>
+        <see cref="E:System.Windows.Forms.Control.MouseLeave" /> イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む <see cref="T:System.EventArgs" />。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnSizeChanged(System.EventArgs)">
+      <summary>System.Windows.Forms.Control.SizeChanged イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnValidated(System.EventArgs)">
+      <summary>オーバーライド。コントロールイベントとビューシステムをリンクします。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnValidating(System.ComponentModel.CancelEventArgs)">
+      <summary>オーバーライド。コントロールイベントとビューシステムをリンクします。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.OnVisibleChanged(System.EventArgs)">
+      <summary>オーバーライド。VisibleChanged イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+      <summary>オーバーライド。コマンドキーを処理します。</summary>
+      <param name="message">処理するウィンドウメッセージを表す、参照渡しされた <see cref="T:System.Windows.Forms.Message" />。</param>
+      <param name="keyData">処理するキーを表す <see cref="T:System.Windows.Forms.Keys" /> 値の 1 つ。</param>
+      <returns>文字がコントロールによって処理された場合は true。それ以外の場合は false。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ControlBase.WndProc(System.Windows.Forms.Message@)">
+      <summary>ウィンドウメッセージを処理します。</summary>
+      <param name="m">ウィンドウメッセージを示します。</param>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.FlatStyleSet">
+      <summary>
+			FlatStyleSetクラスは、コントロールで使用するフラット形式の描画スタイルを設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.FlatStyleSet.#ctor">
+      <summary>
+			FlatStyleSetクラスの新しいインスタンスを初期化します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.FlatStyleSet.#ctor(GrapeCity.Win.Bars.AlignHorizontal,GrapeCity.Win.Bars.AlignVertical,System.Drawing.Color,System.Drawing.Font,System.Drawing.Color,GrapeCity.Win.Bars.ImagePosition,System.Int32,GrapeCity.Win.Common.Margins,GrapeCity.Win.Common.TextEffect,System.Boolean)">
+      <summary>
+        <see cref="T:GrapeCity.Win.Bars.FlatStyleSet" /> クラスの新しいインスタンスを初期化します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.FlatStyleSet.ToString">
+      <summary>
+			FlatStyleSetオブジェクトを表す文字列を戻します。
+			</summary>
+      <returns>クラス名を示す <b>string</b>。</returns>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.FunctionKeyPressEventArgs">
+      <summary>GcClassicFunctionKeyコントロールのFunctionKeyPressイベントのデータを提供します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.#ctor(GrapeCity.Win.Bars.KeyItem)">
+      <summary>コンストラクター。</summary>
+      <param name="keyItem">キーデータ（キーコード + 修飾キー）。</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.Alt">
+      <summary>Altキーが押されたかどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.Control">
+      <summary>Controlキーが押されたかどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.Handled">
+      <summary>イベントが処理されたかどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.Key">
+      <summary>押されたボタンに対応するキーボード上のキーを取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.KeyIndex">
+      <summary>押されたボタンに対応するKeyItemオブジェクトのKeySet内でのインデックスを取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.Modifiers">
+      <summary>修飾子キー (Ctrl、Shift、および Alt) の中で、どのキーの組み合わせが押されたのかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.FunctionKeyPressEventArgs.Shift">
+      <summary>Shiftキーが押されたかどうかを示す値を取得します。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.FunctionKeyPressEventHandler">
+      <summary>GcClassicFunctionKeyコントロールのKeyDownイベントを処理するメソッドを表します。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.GcClassicFunctionKey">
+      <summary>
+			FunctionKeyクラスは、ファンクションキーコントロールを形成する本体クラスです。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.#ctor">
+      <summary>
+			GcClassicFunctionKeyクラスの新しいインスタンスを初期化します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.AboutBox">
+      <summary>
+			バージョン情報ダイアログボックスを表示します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ActiveKeySet">
+      <summary>
+			コントロールで使用するキーセットを取得または設定します。
+			</summary>
+      <value>string データ型。デフォルト値は "Default" です。"Default" をキーとして持つデフォルトのキーセットが存在します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ActiveKeySetIndex">
+      <summary>
+			コントロールで使用するキーセットのインデックスを取得または設定します。
+			</summary>
+      <value>int データ型。デフォルト値は "0" です。"Default" をキーとして持つデフォルトのキーセットが存在します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ActiveStyleSet">
+      <summary>
+			コントロールで使用するスタイルセットを取得または設定します。
+			</summary>
+      <value>string データ型。デフォルト値は "" です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ActiveStyleSetIndex">
+      <summary>
+			コントロールで使用するスタイルセットのインデックスを取得または設定します。
+			</summary>
+      <value>int データ型。デフォルト値は -1 です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.AllowButtonEffect">
+      <summary>
+			ボタンが押されたときにボタンの外観を変更するかどうかを取得または設定します。
+			</summary>
+      <value>true（デフォルト）は、クリックの効果を表示することを示します。false は、クリックの効果を表示しないことを示します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.AllowButtonFocus">
+      <summary>コントロールがフォーカスを取得できるかどうかを示す bool 値を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.AutoSize">
+      <summary>コントロールのサイズを自動調整するかどうかを取得または設定します。</summary>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.AutoSizeChanged">
+      <summary>
+        <see cref="P:System.Windows.Forms.Control.AutoSize" /> プロパティの値が変更されたときに発生します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.BackColor">
+      <summary>
+			コントロールの背景色を取得または設定します。
+			</summary>
+      <value>デフォルト値は SystemColors.Control です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.BackgroundImage">
+      <summary>
+			コントロールに表示する背景画像を取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.BackgroundImageLayout">
+      <summary>
+			コントロールに表示する背景イメージのレイアウトを取得または設定します。
+			</summary>
+      <value>
+        <see cref="T:System.Windows.Forms.ImageLayout" /> の値（Center、None、Stretch、Tile、または Zoom）の 1 つ。デフォルト値は Tile です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.BorderStyle">
+      <summary>
+			コントロールの境界線の種類を取得または設定します。
+			</summary>
+      <value>BorderStyle 値の 1 つ。デフォルト値は BorderStyle.Fixed3D です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ButtonHeight">
+      <summary>
+			ボタンの高さを取得または設定します。
+			</summary>
+      <value>ピクセル単位。デフォルト値は 0 で、ボタンの高さがコントロールのサイズによって自動的に調整されることを意味します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ButtonWidth">
+      <summary>
+			ボタンの幅を取得または設定します。
+			</summary>
+      <value>ピクセル単位。デフォルト値は 0 で、ボタンの幅がコントロールのサイズによって自動的に調整されることを意味します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ColumnGroups">
+      <summary>
+			グループ数とグループごとの列数を取得または設定します。
+			</summary>
+      <value>String データ型。数字と "|" 文字のみを指定できます。デフォルト値は "5|5|2" です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ColumnSpacing">
+      <summary>
+			ボタンの列間の距離を取得または設定します。
+			</summary>
+      <value>Int データ型。ピクセル単位。デフォルト値は 0 です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ControlBevel">
+      <summary>
+			コントロールのベベルを取得または設定します。
+			</summary>
+      <value>Bevel データ型。デフォルトのベベル幅は 0 です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Cursor">
+      <summary>
+			マウスポインタがコントロール上にあるときに使用されるカーソルを取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.DefaultSize">
+      <summary>デフォルトサイズを取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.Dispose(System.Boolean)">
+      <summary>Dispose をオーバーライドします。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Dock">
+      <summary>
+			コントロールをコンテナのどの位置にドッキングするかを取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Font">
+      <summary>
+			キャプションのフォントを取得または設定します。
+			</summary>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.FontChanged">
+      <summary>
+        Fontプロパティの値が変化したとき発生します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ForeColor">
+      <summary>文字色を取得または設定します。</summary>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.ForeColorChanged">
+      <summary>
+        ForeColorプロパティの値が変化したとき発生します。</summary>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.FunctionKeyPress">
+      <summary>
+			ファンクションキーの押下時、またはファンクションキーと関連付けられたボタンのクリック時に発生します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.GroupSpacing">
+      <summary>
+			ボタンのグループ間の距離を取得または設定します。
+			</summary>
+      <value>Int データ型。ピクセル単位。デフォルト値は 10 です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ImageList">
+      <summary>
+			ボタンに表示する画像を指定するためのイメージリストを取得または設定します。
+			</summary>
+      <value>ImageList データ型。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ImeMode">
+      <summary>コントロールのInput Method Editor（IME）のモードを取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.InteractiveMouse">
+      <summary>
+			ボタンのクリック時に、対応するFunctionKeyPressイベントを発生させるかどうかを取得または設定します。
+			</summary>
+      <value>true（デフォルト）は、マウスをクリックしたときに対応する FKeyPress イベントを発生させることを示します。false は、マウスをクリックしたときに何の効果も起こらないことを示します。</value>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.IsInputKey(System.Windows.Forms.Keys)">
+      <summary>指定されたキーが、通常の入力キーであるか、またはプリプロセスを必要とする特殊なキーであるかを判断します。</summary>
+      <param name="keyData">System.Windows.Forms.Keys 値の 1 つ。</param>
+      <returns>指定したキーが通常の入力キーである場合は true。それ以外の場合は false。</returns>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.KeyDown">
+      <summary>コントロールにフォーカスがあるときにキーが押されると発生します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.KeyItemFromPoint(System.Int32,System.Int32)">
+      <summary>
+			渡された座標位置に対応するKeyItemオブジェクトを返します。
+			</summary>
+      <param name="x">ピクセル単位のx座標</param>
+      <param name="y">ピクセル単位のy座標</param>
+      <returns>
+			座標位置に対応する<see cref="T:GrapeCity.Win.Bars.KeyItem" />。
+			</returns>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.KeyPress">
+      <summary>コントロールにフォーカスがあるときにキーが押されると発生します。 </summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.KeyRepeat">
+      <summary>
+			キーを押し続けている間、FunctionKeyPressイベントを繰り返し発生させるかどうかを取得または設定します。
+			</summary>
+      <value>True は、キーを離すまで FKeyPress イベントが複数回発生することを示します。False（デフォルト）は、キーを押し続けたときにも FKeyPress イベントは 1 回だけしか発生しないことを示します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.KeySets">
+      <summary>
+			KeySetsコレクションを取得します。
+			</summary>
+      <value>KeySet コレクション。</value>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.KeyUp">
+      <summary>コントロールにフォーカスがあるときにキーが離されると発生します。 </summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Margins">
+      <summary>
+			コントロールのマージンを取得または設定します。
+			</summary>
+      <value>Margins データ型。デフォルト値は 2,2,2,2 です。</value>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnAutoSizeChanged(System.EventArgs)">
+      <summary>System.Windows.Forms.Control.AutoSizeChanged イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnGotFocus(System.EventArgs)">
+      <summary>System.Windows.Forms.Control.GotFocus イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+      <summary>System.Windows.Forms.Control.KeyDown イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.Windows.Forms.KeyEventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+      <summary>System.Windows.Forms.Control.KeyUp イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.Windows.Forms.KeyEventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnLostFocus(System.EventArgs)">
+      <summary>System.Windows.Forms.Control.LostFocus イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.EventArgs。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnMouseLeave(System.EventArgs)">
+      <summary>オーバーライド。MouseLeave を呼び出します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+      <summary>オーバーライド。ツールチップを表示します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnParentChanged(System.EventArgs)">
+      <summary>オーバーライド。OnParentChanged。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.OnRightToLeftChanged(System.EventArgs)">
+      <summary>System.Windows.Forms.Control.RightToLeftChanged イベントを発生させます。</summary>
+      <param name="e">イベントデータを含む System.EventArgs。</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Padding">
+      <summary>Padding を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.PressColor">
+      <summary>
+			押された状態のボタンの描画に使用する色を取得または設定します。
+			</summary>
+      <value>デフォルト値は SystemColors.Control です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Redraw">
+      <summary>
+			コントロールを再描画するかどうかを取得または設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ResetControlBevel">
+      <summary>
+			ControlBevelプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ResetEnabled">
+      <summary>
+			Enabledプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ResetForeColor">
+      <summary>
+			ForeColorプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ResetMargins">
+      <summary>
+			Marginsプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ResetPressColor">
+      <summary>
+			PressColorプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ResetSingleBorderColor">
+      <summary>
+			SingleBorderColorプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ResetSize">
+      <summary>
+			Sizeプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.RightToLeft">
+      <summary>コントロールの要素が、右から左へ表示するフォントを使用するロケールに対応して配置されるかどうかを示す値を取得または設定します。</summary>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.RightToLeftChanged">
+      <summary>
+        <see cref="P:System.Windows.Forms.Control.RightToLeft" /> プロパティの値が変更されたときに発生します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.RowCount">
+      <summary>
+			コントロール上のボタンの行数を取得または設定します。
+			</summary>
+      <value>int データ型。デフォルト値は 1 です。0 より大きい値を指定する必要があります。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.RowSpacing">
+      <summary>
+			ボタンの行間の距離を取得または設定します。
+			</summary>
+      <value>Int データ型。ピクセル単位。デフォルト値は 0 です。</value>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.ShiftStateDown">
+      <summary>
+			［Alt］、［Ctrl］、または［Shift］のいずれかのキーを押したときに発生します。
+			</summary>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.GcClassicFunctionKey.ShiftStateUp">
+      <summary>
+			押していた［Alt］、［Ctrl］、または［Shift］のいずれかのキーを離したときに発生します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeActiveKeySet">
+      <summary>
+			ActiveKeySetプロパティが初期値から変更されたかどうかを示す値を返します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeActiveStyleSet">
+      <summary>ActiveStyleSet プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeBackColor">
+      <summary>BackColor プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeControlBevel">
+      <summary>ContolBevel プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeForeColor">
+      <summary>ForeColor プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeMargins">
+      <summary>Margins プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializePressColor">
+      <summary>PressColor プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeSingleBorderColor">
+      <summary>SingleBorderColor プロパティを永続化する必要があるかどうかを示します。</summary>
+      <returns>プロパティ値がデフォルトから変更されている場合は true。それ以外の場合は false。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeSize">
+      <summary>
+        <see cref="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Size" /> プロパティを永続化する必要があるかどうかを示します。</summary>
+      <returns>
+プロパティ値がデフォルトから変更されている場合は <b>true</b>。それ以外の場合は <b>false</b>。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.GcClassicFunctionKey.ShouldSerializeText">
+      <summary>Text プロパティをシリアル化する必要があるかどうかを示す値を返します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.ShowTips">
+      <summary>
+			ボタンにツールチップを表示するかどうかを取得または設定します。
+			</summary>
+      <value>true（デフォルト）は、ツールチップを表示することを示します。false は、ツールチップを表示しないことを示します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.SingleBorderColor">
+      <summary>
+			コントロールの境界線の色を取得または設定します。
+			</summary>
+      <value>デフォルト値は <see cref="P:System.Drawing.SystemColors.WindowFrame" /> です。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Size">
+      <summary>
+			コントロールの高さと幅を取得または設定します。
+			</summary>
+      <value>コントロールの高さと幅（ピクセル単位）を表す <see cref="T:System.Drawing.Size" /> オブジェクト。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.StandardTab">
+      <summary>［Tab］キーを押したときにフォーカスがファンクションキーボタンの間を移動するかどうかを示す bool 値を取得または設定します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.StyleSets">
+      <summary>
+			StyleSetsコレクションを取得します。
+			</summary>
+      <value>StyleSet コレクション。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.Text">
+      <summary>
+			コントロールに関連付けられているテキストを取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.UsePressColor">
+      <summary>
+			押された状態のボタンの描画に、PressColorプロパティで設定した色を使用するかどうかを取得または設定します。
+			</summary>
+      <value>true は、PressColor プロパティの設定を使用することを示します。false（デフォルト）は、PressColor プロパティの設定を無視することを示します。</value>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.GcClassicFunctionKey.UseSimulatedF10">
+      <summary>日本語 IME がアクティブなときにシミュレートされた［F10］キーを使用するかどうかを示す値を取得または設定します。</summary>
+      <value>日本語 IME がアクティブなときにシミュレートされた［F10］キーを使用するかどうかを示す <see langword="bool" /> 値。デフォルト値は <see langword="true" /> です。</value>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.IKeyCollection">
+      <summary>キーコレクションを定義します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.Add(System.String,System.Object)">
+      <summary>項目をコレクションに追加します。</summary>
+      <param name="key">キー</param>
+      <param name="value">値</param>
+      <returns>インデックス</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.AddRange(System.String[],System.Object[])">
+      <summary>複数のアイテムをコレクションに追加します。</summary>
+      <param name="keys">キー</param>
+      <param name="values">値</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.Clear">
+      <summary>レクション内の要素をすべて削除します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.ContainsKey(System.String)">
+      <summary>指定したキーを含む値がコレクションに含まれるかどうかを示す値を返します。</summary>
+      <param name="key">キー</param>
+      <returns>trueまたはfalse</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.ContainsValue(System.Object)">
+      <summary>指定した値を含む値がコレクションに含まれるかどうかを示す値を返します。</summary>
+      <param name="value">値</param>
+      <returns>trueまたはfalse</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.FromIndexToKey(System.Int32)">
+      <summary>インデックスから対応するキーを取得します。</summary>
+      <param name="index">インデックス</param>
+      <returns>キー</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.FromKeyToIndex(System.String)">
+      <summary>キーから対応するインデックスを取得します。</summary>
+      <param name="key">キー</param>
+      <returns>インデックス</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.IndexOf(System.Object)">
+      <summary>インデックスからキーを取得します。</summary>
+      <param name="value">値</param>
+      <returns>インデックス</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.Insert(System.Int32,System.String,System.Object)">
+      <summary>項目をコレクションに挿入します。</summary>
+      <param name="index">項目</param>
+      <param name="key">キー</param>
+      <param name="value">値</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.IKeyCollection.IsFixedSize">
+      <summary>コレクションが固定サイズかどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.IKeyCollection.IsReadOnly">
+      <summary>コレクションが読み取り専用かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.IKeyCollection.Item(System.Int32)">
+      <summary>指定したキーから値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.IKeyCollection.Item(System.String)">
+      <summary>指定した文字列から値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.KeyOf(System.Object)">
+      <summary>値からキーを取得します。</summary>
+      <param name="value">値</param>
+      <returns>キー</returns>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.IKeyCollection.Keys">
+      <summary>キーを含むコレクションを取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.Remove(System.Object)">
+      <summary>指定した項目をコレクションから削除します。</summary>
+      <param name="value">項目</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.RemoveAt(System.Int32)">
+      <summary>インデックスで指定した項目をコレクションから削除します。</summary>
+      <param name="index">インデックス</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IKeyCollection.RemoveAt(System.String)">
+      <summary>指定したキーの項目をコレクションから削除します。</summary>
+      <param name="key">キー</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.IKeyCollection.Values">
+      <summary>値を含むコレクションを取得します。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.ImagePosition">
+      <summary>画像の位置を指定します。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ImagePosition.Bottom">
+      <summary>画像はキャプションの下に表示されます。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ImagePosition.Left">
+      <summary>画像はキャプションの左に表示されます。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ImagePosition.Right">
+      <summary>画像はキャプションの右に表示されます。</summary>
+    </member>
+    <member name="F:GrapeCity.Win.Bars.ImagePosition.Top">
+      <summary>画像はキャプションの上に表示されます。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.IStyleSet">
+      <summary>ボタンの描画スタイルを実装するインタフェース。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.IStyleSet.Draw(System.Drawing.Graphics,GrapeCity.Win.Bars.PaintingData)">
+      <summary>ボタンの描画を実装するメソッド。</summary>
+      <param name="g">描画領域を示すGraphics</param>
+      <param name="paintingData">描画データを提供するPaintingData。</param>
+    </member>
+    <member name="E:GrapeCity.Win.Bars.IStyleSet.PropertyChanged">
+      <summary>StyleSet オブジェクトのプロパティが変更されたときに発生するイベント。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.KeyCollection">
+      <summary>KeyCollection クラスは、コレクションを提供する基本クラスです。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.#ctor">
+      <summary>ControlBaseクラスの新しいインスタンスを初期化します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.Add(System.String,System.Object)">
+      <summary>キーと値のペアをコレクションに追加します。</summary>
+      <param name="key">キー。</param>
+      <param name="value">値。</param>
+      <returns>追加されたキーと値のペアのインデックス。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.AddRange(System.String[],System.Object[])">
+      <summary>一連のキーと値のペアを追加します。</summary>
+      <param name="keys">キーのコレクション。</param>
+      <param name="values">値のコレクション。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.Clear">
+      <summary>KeyCollectionコレクション内の要素をすべて削除します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.Insert(System.Int32,System.String,System.Object)">
+      <summary>キーと値のペアをコレクションに挿入します。</summary>
+      <param name="index">挿入位置。</param>
+      <param name="key">キー。</param>
+      <param name="value">値。</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyCollection.IsFixedSize">
+      <summary>コレクションが固定サイズかどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyCollection.IsReadOnly">
+      <summary>コレクションが読み取り専用かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyCollection.Item(System.Int32)">
+      <summary>指定したキーから値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyCollection.Item(System.String)">
+      <summary>指定したキーから値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnAddRange(System.String[],System.Object[])">
+      <summary>一連のキーと値のペアをコレクションに追加する前に、追加のカスタム処理を実行します。</summary>
+      <param name="keys">キーの配列。</param>
+      <param name="values">値の配列。</param>
+      <returns>AddRange 操作を続行するかどうかを示す値を返します。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnAddRangeComplete(System.String[],System.Object[])">
+      <summary>一連のキーと値のペアをコレクションに追加した後に、追加のカスタム処理を実行します。</summary>
+      <param name="keys">キーの配列。</param>
+      <param name="values">値の配列。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnClear">
+      <summary>コレクション内のすべてのキーと値のペアをクリアする前に、追加のカスタム処理を実行します。</summary>
+      <returns>クリア操作を続行するかどうかを示す値を返します。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnClearComplete">
+      <summary>コレクション内のすべてのキーと値のペアをクリアした後に、追加のカスタム処理を実行します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnInsert(System.Int32,System.String,System.Object)">
+      <summary>キーと値のペアをコレクションに挿入する前に、追加のカスタム処理を実行します。</summary>
+      <param name="index">インデックス。</param>
+      <param name="key">キー。</param>
+      <param name="value">値。</param>
+      <returns>挿入操作を続行するかどうかを示す値を返します。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnInsertComplete(System.Int32,System.String,System.Object)">
+      <summary>キーと値のペアをコレクションに挿入した後に、追加のカスタム処理を実行します。</summary>
+      <param name="index">インデックス。</param>
+      <param name="key">キー。</param>
+      <param name="value">値。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnRemove(System.Int32,System.String,System.Object)">
+      <summary>キーと値のペアをコレクションから削除する前に、追加のカスタム処理を実行します。</summary>
+      <param name="index">インデックス。</param>
+      <param name="key">キー。</param>
+      <param name="value">値。</param>
+      <returns>削除操作を続行するかどうかを示す値を返します。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnRemoveComplete(System.Int32,System.String,System.Object)">
+      <summary>キーと値のペアをコレクションから削除した後に、追加のカスタム処理を実行します。</summary>
+      <param name="index">インデックス。</param>
+      <param name="key">キー。</param>
+      <param name="value">値。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnSet(System.Int32,System.String,System.Object,System.Object)">
+      <summary>コレクションに値を設定する前に、追加のカスタム処理を実行します。</summary>
+      <param name="index">インデックス。</param>
+      <param name="key">キー。</param>
+      <param name="oldValue">古い値。</param>
+      <param name="newValue">新しい値。</param>
+      <returns>設定操作を続行するかどうかを示す値を返します。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.OnSetComplete(System.Int32,System.String,System.Object,System.Object)">
+      <summary>コレクションに値を設定した後に、追加のカスタム処理を実行します。</summary>
+      <param name="index">インデックス。</param>
+      <param name="key">キー。</param>
+      <param name="oldValue">古い値。</param>
+      <param name="newValue">新しい値。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.Remove(System.String)">
+      <summary>指定したキーの項目をコレクションから削除します。</summary>
+      <param name="key">削除する項目のキー</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyCollection.RemoveAt(System.Int32)">
+      <summary>インデックスで指定した項目をコレクションから削除します。</summary>
+      <param name="index">削除の対象となる項目のインデックス</param>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.KeyItem">
+      <summary>
+			KeyItemクラスは、個々のボタンの外観と動作を設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.#ctor(System.Drawing.Color,System.Int32,System.Boolean,System.Drawing.Color,System.Int32,System.String,System.String)">
+      <summary>型コンバータに使用されます。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.BackColor">
+      <summary>
+			KeyItemオブジェクトの背景色を取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.ButtonIndex">
+      <summary>
+			ファンクションキーを割り当てるボタンのインデックスを取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.Enabled">
+      <summary>
+			KeyItemオブジェクトがキーボードやマウスの操作に応答できるかどうかを取得または設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.Equals(System.Object)">
+      <summary>2 つのオブジェクト インスタンスが等しいかどうかを判断します。</summary>
+      <param name="obj">比較するオブジェクト</param>
+      <returns>現在のオブジェクトのハッシュ コード。</returns>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.ForeColor">
+      <summary>
+			KeyItemオブジェクトの文字色を取得または設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.GetHashCode">
+      <summary>特定の型のハッシュ関数として機能します。</summary>
+      <returns>指定しオブジェクトが現在のオブジェクトと等しい場合は true。それ以外の場合は false。 </returns>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.ImageIndex">
+      <summary>
+			KeyItemオブジェクトに関連付けられたボタンに表示する画像を取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.Key">
+      <summary>
+			KeyItemオブジェクトのKeyを取得します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.ShouldSerializeBackColor">
+      <summary>現在の BackColor プロパティがデフォルト値かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.ShouldSerializeForeColor">
+      <summary>現在の ForeColor プロパティがデフォルト値かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.ShouldSerializeKey">
+      <summary>現在の Key プロパティがデフォルト値かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.ShouldSerializeText">
+      <summary>現在の Text プロパティがデフォルト値かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeyItem.ShouldSerializeToolTipText">
+      <summary>現在の ToolTipText プロパティがデフォルト値かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.Text">
+      <summary>
+			KeyItemオブジェクトのキャプションを取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeyItem.ToolTipText">
+      <summary>
+			KeyItemオブジェクトに関連付けられたツールチップに表示するテキストを取得または設定します。
+			</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.KeySet">
+      <summary>
+			KeySetクラスは、16個のボタン一式を保持するコレクションです。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySet.#ctor">
+      <summary>
+			KeySetクラスの新しいインスタンスを初期化します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySet.#ctor(GrapeCity.Win.Bars.KeyItem[])">
+      <summary>コンストラクター。</summary>
+      <param name="keyItems">キー項目。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySet.CopyTo(System.Array,System.Int32)">
+      <summary>特定のインデックスからコレクションの要素を配列にコピーします。</summary>
+      <param name="array">配列</param>
+      <param name="index">配列のインデックス</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeySet.Count">
+      <summary>
+			KeySetオブジェクト内の要素の総数を取得します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySet.GetEnumerator">
+      <summary>
+			KeySetオブジェクトのIEnumeratorを返します。
+			</summary>
+      <returns>列挙子インタフェース。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySet.IndexOf(GrapeCity.Win.Bars.KeyItem)">
+      <summary>
+			指定した項目のKeySetオブジェクト内の位置（インデックス）を取得します。
+			</summary>
+      <param name="keyItem">オブジェクト内で検索する項目 （KeyItemオブジェクト）</param>
+      <returns>
+			KeySet内での位置を示す 0 から始まる整数値
+			</returns>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeySet.IsSynchronized">
+      <summary>アクセスが同期されている (スレッド セーフである) かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeySet.Item(System.Int32)">
+      <summary>項目を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeySet.SyncRoot">
+      <summary>アクセスを同期するために使用できるオブジェクトを取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySet.ToString">
+      <summary>
+			KeySetオブジェクトを表す文字列を戻します。
+			</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.KeySetCollection">
+      <summary>
+			KeySetCollectionクラスは、複数のKeySetオブジェクトを保持するコレクションです。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.#ctor(System.String[],GrapeCity.Win.Bars.KeySet[])">
+      <summary>
+			KeySetCollectionクラスの新しいインスタンスを初期化します。
+			</summary>
+      <param name="keys">KeySetオブジェクトの識別名</param>
+      <param name="keySets">KeySetオブジェクト</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.Add(System.String)">
+      <summary>項目をコレクションに追加します。</summary>
+      <param name="key">キー</param>
+      <returns>インデックス。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.Add(System.String,GrapeCity.Win.Bars.KeySet)">
+      <summary>
+			KeySetCollectionコレクションの末尾にKeySetオブジェクトを追加します。
+			</summary>
+      <param name="key">KeySetオブジェクトの識別名</param>
+      <param name="keyset">キーセット。</param>
+      <returns>
+			KeySetCollection内の要素の総数を示す整数値
+			</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.AddRange(System.String[],GrapeCity.Win.Bars.KeySet[])">
+      <summary>複数のアイテムをコレクションに追加します。</summary>
+      <param name="keys">キー</param>
+      <param name="keySets">KeySet の配列。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.Clear">
+      <summary>
+			KeySetCollectionコレクション内の要素をすべて削除します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.CopyTo(GrapeCity.Win.Bars.KeySet[])">
+      <summary>コレクションの要素を配列にコピーします。</summary>
+      <param name="array">配列</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.CopyTo(GrapeCity.Win.Bars.KeySet[],System.Int32)">
+      <summary>
+        <b>KeySetCollection</b> の項目を、<b>KeySet</b> 型の互換性のある 1 次元配列の指定した 0 から始まるインデックス以降にコピーします。</summary>
+      <param name="array">コピー操作のコピー先として使用する <b>KeySet</b> 型の配列。</param>
+      <param name="arrayIndex">コピーするコレクションの貼り付け開始位置を示す 0 から始まるインデックス。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.Insert(System.Int32,System.String)">
+      <summary>項目をコレクションに挿入します。</summary>
+      <param name="index">項目</param>
+      <param name="key">キー</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.Insert(System.Int32,System.String,GrapeCity.Win.Bars.KeySet)">
+      <summary>
+			KeySetCollectionコレクションのインデックスで指定した位置にKeySetオブジェクトを追加します。
+			</summary>
+      <param name="index">KeySetオブジェクトを追加する位置</param>
+      <param name="key">KeySetオブジェクトの識別名</param>
+      <param name="keySet">KeySetオブジェクト</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeySetCollection.Item(System.Int32)">
+      <summary>指定したキーから値を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.KeySetCollection.Item(System.String)">
+      <summary>指定した文字列から値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.OnAddRangeComplete(System.String[],System.Object[])">
+      <summary>オーバーライド。一連のキーと値のペアをコレクションに追加した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.OnClear">
+      <summary>オーバーライド。コレクションのすべての項目をクリアするときに呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.OnClearComplete">
+      <summary>オーバーライド。コレクションのすべての項目をクリアした後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.OnInsertComplete(System.Int32,System.String,System.Object)">
+      <summary>オーバーライド。キーと値のペアを特定のインデックスに挿入した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.OnRemove(System.Int32,System.String,System.Object)">
+      <summary>オーバーライド。キーと値のペアを削除するときに呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.OnRemoveComplete(System.Int32,System.String,System.Object)">
+      <summary>オーバーライド。キーと値のペアを削除した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.OnSetComplete(System.Int32,System.String,System.Object,System.Object)">
+      <summary>オーバーライド。キーと値のペアを特定のインデックスに設定した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.Remove(System.String)">
+      <summary>指定したキーの項目をコレクションから削除します。</summary>
+      <param name="key">削除する項目のキー</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.KeySetCollection.RemoveAt(System.Int32)">
+      <summary>
+			コレクションのインデックスで指定したKeySetオブジェクトを削除します。
+			</summary>
+      <param name="index">削除の対象となるKeySetオブジェクトのインデックス</param>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.PaintingData">
+      <summary>描画データを提供します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.PaintingData.BackColor">
+      <summary>背景色を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.PaintingData.Bounds">
+      <summary>描画領域を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.PaintingData.ButtonState">
+      <summary>ボタンの状態を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.PaintingData.ForeColor">
+      <summary>前景色を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.PaintingData.Image">
+      <summary>画像を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.PaintingData.Key">
+      <summary>キーを取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.PaintingData.Text">
+      <summary>文字列を取得します。</summary>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.PopupStyleSet">
+      <summary>
+			PopupStyleSetクラスは、コントロールで使用するポップアップ形式の描画スタイルを設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.PopupStyleSet.#ctor">
+      <summary>
+			PopupStyleSetクラスの新しいインスタンスを初期化します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.PopupStyleSet.#ctor(GrapeCity.Win.Bars.AlignHorizontal,GrapeCity.Win.Bars.AlignVertical,System.Drawing.Color,System.Drawing.Font,System.Drawing.Color,GrapeCity.Win.Bars.ImagePosition,System.Int32,GrapeCity.Win.Common.Margins,GrapeCity.Win.Common.TextEffect,System.Boolean)">
+      <summary>
+        <see cref="T:GrapeCity.Win.Bars.PopupStyleSet" /> クラスの新しいインスタンスを初期化します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.PopupStyleSet.ToString">
+      <summary>
+			PopupStyleSetオブジェクトを表す文字列を戻します。
+			</summary>
+      <returns>クラス名を示す <b>string</b>。</returns>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.StyleSetCollection">
+      <summary>
+			描画スタイルのコレクションです。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.Add(System.String,GrapeCity.Win.Bars.IStyleSet)">
+      <summary>
+			StyleSetCollectionコレクションの末尾にIStyleSetインタフェースを持つオブジェクトを追加します。
+			</summary>
+      <param name="key">この項目のキー。</param>
+      <param name="styleSet">この項目の値（StyleSet）。</param>
+      <returns>この項目の StyleSetCollection 内のインデックス。</returns>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.AddRange(System.String[],GrapeCity.Win.Bars.IStyleSet[])">
+      <summary>
+			StyleSetCollectionコレクションの末尾にIStyleSetインタフェースを持つオブジェクト（配列）を追加します。
+			</summary>
+      <param name="keys">キーの配列。</param>
+      <param name="styleSets">StyleSet の配列。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.Clear">
+      <summary>
+			StyleSetCollectionコレクション内の要素をすべて削除します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.CopyTo(GrapeCity.Win.Bars.IStyleSet[])">
+      <summary>
+			既存の配列にStyleSetCollectionコレクションをコピーします。
+			</summary>
+      <param name="array">コピー操作のコピー先として使用する <b>StyleSet</b> 型の配列。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.CopyTo(GrapeCity.Win.Bars.IStyleSet[],System.Int32)">
+      <summary>
+			既存の配列にStyleSetCollectionコレクションをコピーします。
+			</summary>
+      <param name="array">コピー操作のコピー先として使用する <b>StyleSet</b> 型の配列。</param>
+      <param name="arrayIndex">コピーするコレクションの貼り付け開始位置を示す 0 から始まるインデックス。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.Insert(System.Int32,System.String,GrapeCity.Win.Bars.IStyleSet)">
+      <summary>
+			StyleSetCollectionコレクションのインデックスで指定した位置に描画スタイルを追加します。
+			</summary>
+      <param name="index">挿入する StyleSet のインデックス。</param>
+      <param name="key">挿入する StyleSet のキー。</param>
+      <param name="styleSet">挿入する StyleSet オブジェクト。</param>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.StyleSetCollection.Item(System.Int32)">
+      <summary>指定したインデックスにある StyleSet を取得します。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.StyleSetCollection.Item(System.String)">
+      <summary>指定したキーを持つ StyleSet を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnAddRange(System.String[],System.Object[])">
+      <summary>オーバーライド。キーと値のペアの配列をコレクションに追加するときに呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnAddRangeComplete(System.String[],System.Object[])">
+      <summary>オーバーライド。キーと値のペアの配列をコレクションに追加した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnClear">
+      <summary>オーバーライド。コレクションをクリアするときに呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnClearComplete">
+      <summary>オーバーライド。コレクションをクリアした後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnInsert(System.Int32,System.String,System.Object)">
+      <summary>オーバーライド。キーと値のペアをコレクションに挿入するときに呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnInsertComplete(System.Int32,System.String,System.Object)">
+      <summary>オーバーライド。キーと値のペアをコレクションに挿入した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnRemove(System.Int32,System.String,System.Object)">
+      <summary>オーバーライド。キーと値のペアをコレクションから削除するときに呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnRemoveComplete(System.Int32,System.String,System.Object)">
+      <summary>オーバーライド。キーと値のペアをコレクションから削除した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnSet(System.Int32,System.String,System.Object,System.Object)">
+      <summary>オーバーライド。キーと値のペアを設定するときに呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.OnSetComplete(System.Int32,System.String,System.Object,System.Object)">
+      <summary>オーバーライド。キーと値のペアを設定した後に呼び出されます。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.Remove(System.String)">
+      <summary>
+			指定した描画スタイルを削除します。
+			</summary>
+      <param name="key">キーを示す文字列。</param>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.StyleSetCollection.RemoveAt(System.Int32)">
+      <summary>
+			コレクションのインデックスで指定した描画スタイルを削除します。
+			</summary>
+      <param name="index">インデックスを示す整数。</param>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.ThreeDStyleSet">
+      <summary>
+			ThreeDStyleSetクラスは、コントロールで使用する3D形式の描画スタイルを設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ThreeDStyleSet.#ctor">
+      <summary>
+			ThreeDStyleSetクラスの新しいインスタンスを初期化します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ThreeDStyleSet.#ctor(GrapeCity.Win.Bars.AlignHorizontal,GrapeCity.Win.Bars.AlignVertical,System.Drawing.Color,System.Drawing.Font,System.Drawing.Color,GrapeCity.Win.Bars.ImagePosition,System.Int32,GrapeCity.Win.Common.Margins,GrapeCity.Win.Common.TextEffect,System.Boolean,GrapeCity.Win.Common.Bevel,System.Windows.Forms.BorderStyle)">
+      <summary>コンストラクター。</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.ThreeDStyleSet.Bevel">
+      <summary>
+			ベベルを取得または設定します。
+			</summary>
+    </member>
+    <member name="P:GrapeCity.Win.Bars.ThreeDStyleSet.BorderStyle">
+      <summary>
+			3D効果の境界線の種類を取得または設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ThreeDStyleSet.ResetBevel">
+      <summary>
+			Bevelプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ThreeDStyleSet.ResetBorderStyle">
+      <summary>
+			BorderStyleプロパティを既定値に戻します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ThreeDStyleSet.ShouldSerializeBevel">
+      <summary>Bevel プロパティがデフォルト値かどうかを示す値を取得します。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.ThreeDStyleSet.ToString">
+      <summary>
+			ThreeDStyleSetオブジェクトを表す文字列を戻します。
+			</summary>
+      <returns>クラス名。</returns>
+    </member>
+    <member name="T:GrapeCity.Win.Bars.XPThemeStyleSet">
+      <summary>
+			XPThemeStyleSetクラスは、コントロールで使用するXPテーマに対応した描画スタイルを設定します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.XPThemeStyleSet.#ctor">
+      <summary>
+			XPThemeStyleSetクラスの新しいインスタンスを初期化します。
+			</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.XPThemeStyleSet.#ctor(GrapeCity.Win.Bars.AlignHorizontal,GrapeCity.Win.Bars.AlignVertical,System.Drawing.Color,System.Drawing.Font,System.Drawing.Color,GrapeCity.Win.Bars.ImagePosition,System.Int32,GrapeCity.Win.Common.Margins,GrapeCity.Win.Common.TextEffect,System.Boolean,GrapeCity.Win.Common.Bevel,System.Windows.Forms.BorderStyle)">
+      <summary>コンストラクター。</summary>
+    </member>
+    <member name="M:GrapeCity.Win.Bars.XPThemeStyleSet.ToString">
+      <summary>
+			XPThemeStyleSetオブジェクトを表す文字列を戻します。
+			</summary>
+      <returns>クラス名。</returns>
+    </member>
+  </members>
+</doc>

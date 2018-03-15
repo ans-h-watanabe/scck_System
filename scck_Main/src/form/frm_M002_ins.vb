@@ -43,7 +43,7 @@ Public Class frm_M002_ins
     'Private D_DAT As New DataSet
     Private D_TBL As New DataTable
     Private D_MOD As String
-    Private D_ERR As New Utl_ERR
+    Private D_ERR As New utl_Err.utl_ERR
 
 
     Private D_KEY(1) As String
