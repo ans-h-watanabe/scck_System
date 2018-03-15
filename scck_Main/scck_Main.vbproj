@@ -94,6 +94,12 @@
     <Compile Include="src\form\frm_M002_fnd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="src\form\frm_M002_rpt.designer.vb">
+      <DependentUpon>frm_M002_rpt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="src\form\frm_M002_rpt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="src\form\frm_M002_ins.designer.vb">
       <DependentUpon>frm_M002_ins.vb</DependentUpon>
     </Compile>
@@ -125,6 +131,9 @@
   <ItemGroup>
     <EmbeddedResource Include="src\form\frm_M002_fnd.resx">
       <DependentUpon>frm_M002_fnd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\frm_M002_rpt.resx">
+      <DependentUpon>frm_M002_rpt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\frm_M002_ins.resx">
       <DependentUpon>frm_M002_ins.vb</DependentUpon>
