@@ -34,8 +34,7 @@ Public Class frm_Error
         '
         InitializeComponent()
         '
-        LBL_TTL.Text = P1
-        SUB_INT_RTN(P2, P3)
+        LBL_TTL.Text = P1 : SUB_INT_RTN(P2, P3)
         '
         StartPosition = FormStartPosition.Manual
         '
@@ -107,7 +106,10 @@ SUB_EXIT:
                 '
                 D_ITM = New GrapeCity.Win.Editors.ListItem : D_ITM.Text = D_NAM
                 '
-                D_SUB = New GrapeCity.Win.Editors.SubItem : D_SUB.Value = D_NAM : D_ITM.SubItems.Add(D_SUB)
+                '▼新バージョンでは不要
+                '
+                'D_SUB = New GrapeCity.Win.Editors.SubItem : D_SUB.Value = D_NAM : D_ITM.SubItems.Add(D_SUB)
+                '
                 D_SUB = New GrapeCity.Win.Editors.SubItem : D_SUB.Value = P2(I) : D_ITM.SubItems.Add(P2(I))
                 '
                 D_SUB.Value = D_NAM : D_ITM.SubItems.Add(D_SUB)

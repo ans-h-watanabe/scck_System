@@ -47,6 +47,7 @@
 '*************************************************************************************************************
 Imports System.Drawing
 Public Class cns_Com
+
     '*********************************************************************************************************
     '*  ﾒﾝﾊﾞ変数1
     '*********************************************************************************************************
@@ -73,7 +74,7 @@ Public Class cns_Com
     Public Shared C_COM_CLR_007 As Color = Color.Beige
 
     '処理ﾓｰﾄﾞ配色
-    Public Shared C_MOD_ADD_CLR As Color = Color.FromArgb(CType(192, Byte), CType(255, Byte), CType(192, Byte))
+    Public Shared C_MOD_ADD_CLR As Color = Color.FromArgb(CType(175, Byte), CType(238, Byte), CType(238, Byte))
     Public Shared C_MOD_UPD_CLR As Color = Color.FromArgb(CType(255, Byte), CType(255, Byte), CType(192, Byte))
     Public Shared C_MOD_DEL_CLR As Color = Color.FromArgb(CType(255, Byte), CType(192, Byte), CType(192, Byte))
     Public Shared C_MOD_FND_CLR As Color = Color.White
@@ -85,7 +86,8 @@ Public Class cns_Com
 
     Public Shared C_BAK_ACT_CLR As Color = SystemColors.Info
     'Public Shared C_BAK_DEL_CLR As Color = Color.FromArgb(CType(255, Byte), CType(192, Byte), CType(192, Byte))
-    Public Shared C_BAK_DEL_CLR As Color = Color.Red
+    'Public Shared C_BAK_DEL_CLR As Color = Color.Red
+    Public Shared C_BAK_DEL_CLR As Color = Color.FromArgb(CType(255, Byte), CType(99, Byte), CType(71, Byte))
     Public Shared C_FNT_ACT_CLR As Color = Color.Black
     Public Shared C_FNT_DEL_CLR As Color = Color.White
 

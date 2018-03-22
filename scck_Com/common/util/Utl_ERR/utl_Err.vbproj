@@ -79,7 +79,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="form\frm_Error.Designer.vb">
+    <Compile Include="form\frm_Error.designer.vb">
       <DependentUpon>frm_Error.vb</DependentUpon>
     </Compile>
     <Compile Include="form\frm_Error.vb">

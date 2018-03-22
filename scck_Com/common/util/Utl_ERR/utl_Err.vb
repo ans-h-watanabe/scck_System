@@ -86,6 +86,56 @@ EXIT_FUNCTION:
     '*
     '*  処理概要：		ｴﾗｰ項目背景色の変更
     '*
+    '*  引数　　：		1.項目ｵﾌﾞｼﾞｪｸﾄ
+    '*      　　 		2.ｴﾗｰﾒｯｾｰｼﾞ
+    '*
+    '*                  ｵﾌﾟｼｮﾝ1.ｴﾗｰ処理ﾓｰﾄﾞ(True.項目ｴﾗｰ、False.ﾒｯｾｰｼﾞのみ)
+    '*
+    '*  戻り値　：		なし　　　　
+    '*
+    '*********************************************************************************************************
+    Public Sub FNC_ERR_ADD(ByRef P1 As Object, ByVal P2 As String, ByRef P3 As GrapeCity.Win.Components.GcStylePlus)
+        '
+        Dim D_CTL As Control
+        '
+        Try
+            If IsNothing(D_ERR_OBJ) Then
+                ReDim D_ERR_OBJ(0)
+                ReDim D_ERR_MSG(0)
+            Else
+                ReDim Preserve D_ERR_OBJ(D_ERR_OBJ.GetUpperBound(0) + 1)
+                ReDim Preserve D_ERR_MSG(D_ERR_MSG.GetUpperBound(0) + 1)
+            End If
+            '
+            If Not IsNothing(P1) Then
+                D_CTL = CType(P1, Control)
+                D_ERR_OBJ(D_ERR_OBJ.GetUpperBound(0)) = D_CTL
+                '
+                If D_ERR_OBJ.GetUpperBound(0) = 0 Then P3.RemoveActiveStyle(D_CTL)
+                '
+                D_CTL.BackColor = cns_Com.cns_Com.C_ERR_CLR
+            End If
+            '
+            D_ERR_MSG(D_ERR_MSG.GetUpperBound(0)) = P2
+            '
+            If D_ERR_OBJ.GetUpperBound(0) = 0 Then
+                If Not IsNothing(P1) Then
+                    If D_CTL.Visible AndAlso D_CTL.Enabled Then
+                        D_CTL.Focus()
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNCTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：		ｴﾗｰ項目背景色の変更
+    '*
     '*  引数　　：		1.MultiRowSheet
     '*                  2.行ｲﾝﾃﾞｯｸｽ
     '*                  3.列ｲﾝﾃﾞｯｸｽ

@@ -110,6 +110,9 @@ Imports cns_Com.cns_Com
 '*
 '*************************************************************************************************************
 Public Class utl_Com
+
+#Region " 変数宣言 "
+
     '*********************************************************************************************************
     '*  ﾒﾝﾊﾞ変数
     '*********************************************************************************************************
@@ -166,6 +169,27 @@ Public Class utl_Com
     Public Shared P_XID_TO As Long = 0
 
     '*********************************************************************************************************
+    '*  各画面機能用 [処理事業所情報][ﾕｰｻﾞｰ情報]
+    '*********************************************************************************************************
+    Public Structure UserInfo
+
+        Public U_COM_COD As Integer           '事業所コード
+        Public U_COM_NAM As String            '事業所名
+        Public U_COM_NAM_SRT As String        '事業所名略称
+        Public U_PRT_COD As Integer           '部コード
+        Public U_PRT_NAM As String            '部名    
+        Public U_BNC_COD As Integer           '支社コード(ユーザー所属)
+        Public U_BNC_NAM As String            '支社名(ユーザー所属)
+        Public U_BNC_NAM_SRT As String        '支社名略称(ユーザー所属)
+        Public U_USE_PRT_COD As Integer       '運用部署区分
+        Public U_USE_PRT_NAM As String        '運用部署名
+        Public U_ACC_POD As Integer           '決算期
+
+    End Structure
+
+#End Region
+
+    '*********************************************************************************************************
     '*
     '*  処理概要：ｺﾝｽﾄﾗｸﾀ
     '*
@@ -176,11 +200,14 @@ Public Class utl_Com
         Try
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_SUB:
         Exit Sub
     End Sub
+
+#Region " 公開メソッド "
+
     '*********************************************************************************************************
     '*
     '*  処理概要：ﾎｽﾄ名取得
@@ -206,7 +233,7 @@ EXIT_SUB:
             End If
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             If Not (D_RDR Is Nothing) Then
                 D_RDR.Close()
@@ -238,7 +265,7 @@ EXIT_FUNCTION:
                 D_RTN = P1
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_CNV_NUL = D_RTN
@@ -269,10 +296,11 @@ EXIT_FUNCTION:
                 D_RTN = P1
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_CNV_VAL = D_RTN
+        '
         Exit Function
     End Function
 
@@ -294,11 +322,14 @@ EXIT_FUNCTION:
         '
         Try
             Select Case TypeName(P1)
-                Case "Edit", "Mask", "TextBox"
-                    'D_RTN = "'" & CStr(FNC_CNV_NUL(P1.Text, "")).Replace("'", "''") & "'"
+                Case "GcNumber"
+                    D_RTN = FNC_CNV_NUL(P1.Value, 0)
+                    '
+                Case "Edit", "Mask", "TextBox", "GcTextBox", "GcMask"
                     D_RTN = CStr(FNC_CNV_NUL(P1.Text, "")).Replace("‐", "－")
                     D_RTN = "'" & CStr(FNC_CNV_NUL(D_RTN, "")).Replace("'", "''") & "'"
-                Case "Date"
+                    '
+                Case "Date", "GcDate"
                     If IsNothing(P1.Value) Then
                         D_RTN = "Null"
                     Else
@@ -316,7 +347,8 @@ EXIT_FUNCTION:
                         '
                         D_RTN = "'" & P1.Value.ToString() & "'"
                     End If
-                Case "Combo"
+                    '
+                Case "Combo", "GcComboBox"
                     If P1.DropDownStyle = ComboBoxStyle.DropDownList Then
                         D_RTN = FNC_CNV_NUL(P1.SelectedIndex, 0)
                     ElseIf P1.DropDownStyle = ComboBoxStyle.DropDown Then
@@ -325,9 +357,8 @@ EXIT_FUNCTION:
                 Case Else
                     D_RTN = FNC_CNV_NUL(P1.Value, 0)
             End Select
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_SQL_VAL = D_RTN
@@ -366,7 +397,7 @@ EXIT_FUNCTION:
             '
             'D_RTN = D_IPS.AddressList(0).ToString()
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_GET_IPS = D_RTN
@@ -390,7 +421,7 @@ EXIT_FUNCTION:
         Try
             D_RTN = System.Net.Dns.GetHostName()
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_GET_NAM = D_RTN
@@ -414,7 +445,7 @@ EXIT_FUNCTION:
         Try
             D_RTN = "'" & utl_Com.C_USR_IDS & "','" & FNC_GET_IPS() & "'"
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_UPD_USR = D_RTN
@@ -436,9 +467,8 @@ EXIT_FUNCTION:
             'P1.Panels(1).Text = 
             'P1.Panels(3).Text = 
             'P1.Panels(4).Text = 
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -456,32 +486,38 @@ EXIT_FUNCTION:
     Public Shared Sub FNC_TXT_CLR(ByRef P1 As Object)
         '
         Try
-            For Each P1 In P1.Controls
-                Select Case TypeName(P1)
-                    Case "Number", "Edit", "Mask", "TextBox", "Date"
-                        P1.Text = ""
-                        P1.Tag = ""
-                    Case "Combo"
-                        P1.Text = ""
-                        P1.SelectedIndex = 0
-                    Case "MultiRowSheet"
-                        P1.Clear()
-                    Case "CheckBox"
-                        P1.Checked = False
-                    Case "Label"
-                        If Mid(P1.Name, 1, 4).Equals("DSP_") Then
-                            P1.Text = ""
-                            P1.BackColor = SystemColors.Info
-                        End If
-                        P1.UseMnemonic = False
-                    Case "Button"
-                        P1.BackColor = SystemColors.Control
-                    Case Else
-                End Select
+            For Each ctl In P1.Controls
+                With ctl
+                    Select Case TypeName(ctl)
+                        Case "Number", "Edit", "Mask", "TextBox", "Date", "GcNumber", "GcMask", "GcTextBox", "GcDate"
+                            .Text = ""
+                            .Tag = ""
+                        '
+                        Case "GcComboBox", "Combo"
+                            .Text = ""
+                            .SelectedIndex = 0
+                        '
+                        Case "MultiRowSheet"
+                            .Clear()
+                        '
+                        Case "CheckBox", "GcCheckBox"
+                            .Checked = False
+                        '
+                        Case "Label", "GcLabel"
+                            If Mid(.Name, 1, 4).Equals("DSP_") Then
+                                .Text = ""
+                                .BackColor = SystemColors.Info
+                            End If
+                            .UseMnemonic = False
+                        '
+                        Case "GcButton"
+                            .BackColor = SystemColors.Control
+                        Case Else
+                    End Select
+                End With
             Next
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -500,22 +536,24 @@ EXIT_FUNCTION:
     Public Shared Sub FNC_TXT_VIS(ByRef P1 As Object, ByVal P2 As Boolean)
         '
         Try
-            For Each P1 In P1.Controls
-                Select Case TypeName(P1)
-                    Case "Number", "Edit", "Mask", "TextBox", "Date", "Combo", "CheckBox"
-                        P1.Enabled = P2
-                    Case "MultiRowSheet"
-                        If P2 Then
-                            'P1.EditType = GrapeCity.Win.ElTabelle.EditType.AlwaysEdit
-                        Else
-                            'P1.EditType = GrapeCity.Win.ElTabelle.EditType.ReadOnly
-                        End If
-                    Case Else
-                End Select
+            For Each ctl In P1.Controls
+                With ctl
+                    Select Case TypeName(ctl)
+                        Case "Number", "Edit", "Mask", "TextBox", "Date", "Combo", "CheckBox"
+                            .Enabled = P2
+                            '
+                        Case "MultiRowSheet"
+                            If P2 Then
+                                '.EditType = GrapeCity.Win.ElTabelle.EditType.AlwaysEdit
+                            Else
+                                '.EditType = GrapeCity.Win.ElTabelle.EditType.ReadOnly
+                            End If
+                        Case Else
+                    End Select
+                End With
             Next
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -535,7 +573,104 @@ EXIT_FUNCTION:
     '*  戻り値　：なし
     '*
     '*********************************************************************************************************
-    Public Shared Sub FNC_CNF_LST(ByRef P1 As DataTable, ByRef P2 As ListView,
+    Public Shared Sub FNC_CNF_LST(ByRef P1 As DataTable,
+                                  ByRef P2 As DataGridView,
+                                  Optional ByVal FMT_NUM As String = "",
+                                  Optional ByVal FMT_FLT As String = "",
+                                  Optional ByVal FMT_DTE As String = "",
+                                  Optional ByVal FCS_SET As Boolean = True)
+        '
+        Dim I As Integer = 0
+        Dim X As Integer = 0
+        Dim D_CLM(P1.Columns.Count - 1) As DataGridViewColumn
+        Dim D_ITM(P1.Rows.Count - 1) As ListViewItem
+        Dim D_DAT(P1.Columns.Count - 1) As String
+        Dim D_FMT As String = ""
+        Dim D_NUL As Object
+        '
+        Try
+            P2.DataSource = Nothing
+            '
+            P2.AutoGenerateColumns = True
+            P2.DataSource = P1
+            '
+            For I = 0 To P1.Rows.Count - 1 Step 1
+                For X = 0 To P1.Columns.Count - 1 Step 1
+                    If I = 0 Then
+                        D_CLM(X) = New DataGridViewColumn
+                        '※事業所臨時処置
+                        D_CLM(X).HeaderText = P1.Columns(X).ColumnName
+                        D_CLM(X).Width = 100
+                        '
+                        Select Case P1.Columns(X).DataType.Name
+                            Case "Byte", "Int16", "Int32", "Int64", "SByte", "UInt16", "UInt32", "UInt64"
+
+                                D_CLM(X).DefaultCellStyle.Alignment = HorizontalAlignment.Right
+                            Case "Decimal", "Double", "Single"
+                                D_CLM(X).DefaultCellStyle.Alignment = HorizontalAlignment.Right
+                            Case "String", "Char", "Boolean"
+                                D_CLM(X).DefaultCellStyle.Alignment = HorizontalAlignment.Left
+                            Case "DateTime", "TimeSpan"
+                                D_CLM(X).DefaultCellStyle.Alignment = HorizontalAlignment.Center
+                        End Select
+                    End If
+                    '
+                    Select Case P1.Columns(X).DataType.Name
+                        Case "Byte", "Int16", "Int32", "Int64", "SByte", "UInt16", "UInt32", "UInt64"
+                            D_FMT = FMT_NUM
+                            D_NUL = 0
+                        Case "Decimal", "Double", "Single"
+                            D_FMT = FMT_FLT
+                            D_NUL = 0
+                        Case "DateTime", "TimeSpan"
+                            D_FMT = FMT_DTE
+                            D_NUL = Nothing
+                        Case Else
+                            D_FMT = ""
+                            D_NUL = ""
+                    End Select
+                    '
+                    D_DAT(X) = IIf(D_FMT = "", FNC_CNV_NUL(P1.Rows(I).Item(X), D_NUL), Format(FNC_CNV_NUL(P1.Rows(I).Item(X), D_NUL), D_FMT))
+                Next
+                X = 0
+                D_ITM(I) = New ListViewItem(D_DAT)
+                D_ITM(I).BackColor = IIf(I Mod 2 = 1, Color.White, Color.Lavender)
+            Next
+            '
+            'P2.Columns.AddRange()
+            'P2.Columns.AddRange(D_CLM)
+            '
+            'P2.Items.AddRange(D_ITM)
+            '
+            P2.Rows(0).Selected = True
+            'P2.Rows(0).Focused = True
+            '
+            If FCS_SET Then P2.Focus()
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        Finally
+            Erase D_CLM, D_ITM, D_DAT
+        End Try
+EXIT_FUNCTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾘｽﾄﾋﾞｭｰ設定
+    '*
+    '*  引数　　：1.ﾃﾞｰﾀﾃｰﾌﾞﾙ
+    '*          　2.ﾘｽﾄﾋﾞｭｰ
+    '*            ｵﾌﾟｼｮﾝ1.整数ﾌｫｰﾏｯﾄ
+    '*            ｵﾌﾟｼｮﾝ2.実数ﾌｫｰﾏｯﾄ
+    '*            ｵﾌﾟｼｮﾝ3.日付ﾌｫｰﾏｯﾄ
+    '*            ｵﾌﾟｼｮﾝ4.ﾌｫｰｶｽ設定
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_CNF_LST(ByRef P1 As DataTable,
+                                  ByRef P2 As ListView,
                                   Optional ByVal FMT_NUM As String = "",
                                   Optional ByVal FMT_FLT As String = "",
                                   Optional ByVal FMT_DTE As String = "",
@@ -599,13 +734,75 @@ EXIT_FUNCTION:
             If FCS_SET Then P2.Focus()
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             Erase D_CLM, D_ITM, D_DAT
         End Try
 EXIT_FUNCTION:
         Exit Sub
     End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾘｽﾄﾋﾞｭｰ項目幅読込
+    '*
+    '*  引数　　：1.ﾘｽﾄﾋﾞｭｰ
+    '*            2.ﾌｧｲﾙ名
+    '*
+    '*  戻り値　：True.正常、False.異常
+    '*
+    '*********************************************************************************************************
+    Public Shared Function FNC_LOD_LST(ByRef P1 As DataGridView, ByVal P2 As String) As Boolean
+        '
+        Dim I As Integer = 0
+        Dim D_RTN As Boolean = False
+        Dim D_DAT As String = ""
+        Dim D_NAM As String = ""
+        Dim D_WID As String = ""
+        Dim D_POS As Integer = 0
+        Dim D_STM_RDR As StreamReader
+        '
+        Try
+            'XID幅0[固定]
+            If P1.Columns(0).HeaderText.Equals("TTL") Then
+                'P1.Columns(0).Width = 0
+                P1.Columns(0).Visible = False
+            End If
+            '
+            If IsNothing(P1) OrElse P1.Columns.Count <= 0 OrElse P2.Equals("") OrElse
+               Not File.Exists(Application.StartupPath & "\" & C_DIR_LST & "\" & C_COM_COD & "_" & C_USR_IDS & "\" & P2 & ".ini") Then
+                GoTo EXIT_FUNTION
+            End If
+            '
+            D_STM_RDR = New StreamReader(Application.StartupPath & "\" & C_DIR_LST & "\" & C_COM_COD & "_" & C_USR_IDS & "\" & P2 & C_FIL_PRM_EXN, System.Text.Encoding.Default)
+            For I = 0 To P1.Columns.Count - 1 Step 1
+                If D_STM_RDR.Peek <> -1 Then
+                    D_DAT = D_STM_RDR.ReadLine()
+                    D_POS = D_DAT.IndexOf(",")
+                    D_NAM = Mid(D_DAT, 1, D_POS)
+                    D_WID = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
+                    '
+                    If P1.Columns(I).HeaderText.Equals(D_NAM) Then
+                        P1.Columns(I).Width = CInt(D_WID)
+                    End If
+                End If
+            Next
+            '
+            D_RTN = True
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        Finally
+            If Not (D_STM_RDR Is Nothing) Then
+                D_STM_RDR.Close()
+                D_STM_RDR = Nothing
+            End If
+        End Try
+EXIT_FUNTION:
+        FNC_LOD_LST = D_RTN
+        '
+        Exit Function
+    End Function
+
 
     '*********************************************************************************************************
     '*
@@ -629,6 +826,7 @@ EXIT_FUNCTION:
         '
         Try
             'XID幅0[固定]
+            '
             If P1.Columns(0).Text.Equals("TTL") Then
                 P1.Columns(0).Width = 0
             End If
@@ -654,7 +852,7 @@ EXIT_FUNCTION:
             '
             D_RTN = True
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             If Not (D_STM_RDR Is Nothing) Then
                 D_STM_RDR.Close()
@@ -664,7 +862,54 @@ EXIT_FUNCTION:
 EXIT_FUNTION:
         FNC_LOD_LST = D_RTN
         '
+        Exit Function
+    End Function
 
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾘｽﾄﾋﾞｭｰ項目幅保存
+    '*
+    '*  引数　　：1.ﾘｽﾄﾋﾞｭｰ
+    '*            2.ﾌｧｲﾙ名
+    '*
+    '*  戻り値　：True.正常、False.異常
+    '*
+    '*********************************************************************************************************
+    Public Shared Function FNC_SAV_LST(ByRef P1 As DataGridView, ByVal P2 As String) As Boolean
+        '
+        Dim I As Integer = 0
+        Dim D_RTN As Boolean = False
+        Dim D_STM_WIT As StreamWriter
+        '
+        Try
+            If IsNothing(P1) OrElse P1.Columns.Count <= 0 OrElse P2.Equals("") Then
+                GoTo EXIT_FUNTION
+            End If
+            '
+            If Not Directory.Exists(Application.StartupPath & "\" & C_DIR_LST & "\" & C_COM_COD & "_" & C_USR_IDS) Then
+                Directory.CreateDirectory(Application.StartupPath & "\" & C_DIR_LST & "\" & C_COM_COD & "_" & C_USR_IDS)
+            End If
+            '
+            D_STM_WIT = New StreamWriter(Application.StartupPath & "\" & C_DIR_LST & "\" & C_COM_COD & "_" & C_USR_IDS & "\" & P2 & C_FIL_PRM_EXN, False, System.Text.Encoding.Default)
+            '
+            For I = 0 To P1.Columns.Count - 1 Step 1
+                D_STM_WIT.WriteLine(P1.Columns(I).Name & "," & P1.Columns(I).Width.ToString)
+            Next
+            '
+            D_RTN = True
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        Finally
+            If Not (D_STM_WIT Is Nothing) Then
+                D_STM_WIT.Flush()
+                D_STM_WIT.Close()
+                '
+                D_STM_WIT = Nothing
+            End If
+        End Try
+EXIT_FUNTION:
+        FNC_SAV_LST = D_RTN
+        '
         Exit Function
     End Function
 
@@ -680,8 +925,8 @@ EXIT_FUNTION:
     '*********************************************************************************************************
     Public Shared Function FNC_SAV_LST(ByRef P1 As ListView, ByVal P2 As String) As Boolean
         '
-        Dim I As Integer = 0
         Dim D_RTN As Boolean = False
+        Dim I As Integer = 0
         Dim D_STM_WIT As StreamWriter
         '
         Try
@@ -700,7 +945,7 @@ EXIT_FUNTION:
             '
             D_RTN = True
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             If Not (D_STM_WIT Is Nothing) Then
                 D_STM_WIT.Flush()
@@ -745,49 +990,126 @@ EXIT_FUNTION:
             '
             D_STM_WIT = New StreamWriter(Application.StartupPath & "\" & D_DIR & "\" & C_COM_COD & "_" & C_USR_IDS & "\" & P3 & C_FIL_PRM_EXN, False, System.Text.Encoding.Default)
             '
-            For Each P1 In P1.Controls
-                Select Case TypeName(P1)
-                    Case "TextBox", "Edit", "Mask"
-                        If Not P1.Name.Equals("TXT_LOG") Then
-                            '20170901
-                            'D_STM_WIT.WriteLine(P1.Name & "," & P1.Text)
-                            D_STM_WIT.WriteLine(P1.Name & "," & P1.Text.Replace(Chr(13), "").Replace(Chr(10), ""))
-                        End If
-                    Case "Number"
-                        If (P1.MaxValue < P1.Value) Or (P1.MinValue > P1.Value) Then
-                            D_STM_WIT.WriteLine(P1.Name & "," & P1.MinValue.ToString)
-                        Else
-                            D_STM_WIT.WriteLine(P1.Name & "," & P1.Text)
-                        End If
-                    Case "Date"
-                        'D_STM_WIT.WriteLine(P1.Name & "," & (IIf(IsDate(P1.Text), P1.Text, P1.Value)))
-                        'Add 2007/06/08　改定   2007/11/06↓ 改定 2008/05/01
-                        'エラー回避（MinDate以下の日付値の場合は強制的にMinに書き換え）
-                        If Not P1.VALUE Is Nothing Then
-                            If CDate(P1.Value.ToString()) < CDate(P1.MINDATE.ToString()) Then P1.value = P1.mindate
-                        Else
-                            P1.text = ""
-                        End If
-                        '
-                        'Add 2007/06/08　↑ 2007/11/06 ↑ 2008/05/01
-                        D_STM_WIT.WriteLine(P1.Name & "," & P1.Text)
-                    Case "Label"
-                        If Mid(P1.NAME, 1, 4).Equals("DSP_") Then
-                            D_STM_WIT.WriteLine(P1.Name & "," & P1.Text)
-                        End If
-                    Case "Combo"
-                        If P1.DropDownStyle = ComboBoxStyle.DropDownList Then
-                            D_STM_WIT.WriteLine(P1.Name & "," & CStr(P1.SelectedIndex))
-                        ElseIf P1.DropDownStyle = ComboBoxStyle.DropDown Then
-                            D_STM_WIT.WriteLine(P1.Name & "," & P1.Text)
-                        End If
-                    Case "CheckBox"
-                        D_STM_WIT.WriteLine(P1.Name & "," & P1.Checked)
-                    Case Else
-                End Select
+            For Each ctl In P1.Controls
+                With ctl
+                    Select Case TypeName(ctl)
+                        Case "TextBox", "Edit", "Mask", "GcTextBox", "GcMask"
+                            If Not .Name.Equals("TXT_LOG") Then
+                                '20170901
+                                'D_STM_WIT.WriteLine(.Name & "," & .Text)
+                                D_STM_WIT.WriteLine(.Name & "," & .Text.Replace(Chr(13), "").Replace(Chr(10), ""))
+                            End If
+                            '
+                        Case "Number", "GcNumber"
+                            If (.MaxValue < .Value) Or (.MinValue > .Value) Then
+                                D_STM_WIT.WriteLine(.Name & "," & .MinValue.ToString)
+                            Else
+                                D_STM_WIT.WriteLine(.Name & "," & .Text)
+                            End If
+                            '
+                        Case "Date", "GcDate"
+                            'D_STM_WIT.WriteLine(.Name & "," & (IIf(IsDate(.Text), .Text, .Value)))
+                            'Add 2007/06/08　改定   2007/11/06↓ 改定 2008/05/01
+                            'エラー回避（MinDate以下の日付値の場合は強制的にMinに書き換え）
+                            If Not .VALUE Is Nothing Then
+                                If CDate(.Value.ToString()) < CDate(.MINDATE.ToString()) Then .value = .mindate
+                            Else
+                                .text = ""
+                            End If
+                            '
+                            'Add 2007/06/08　↑ 2007/11/06 ↑ 2008/05/01
+                            D_STM_WIT.WriteLine(.Name & "," & .Text)
+                        Case "Label", "GcLabel"
+                            If Mid(.NAME, 1, 4).Equals("DSP_") Then
+                                D_STM_WIT.WriteLine(.Name & "," & .Text)
+                            End If
+                            '
+                        Case "Combo", "GcComboBox"
+                            If .DropDownStyle = ComboBoxStyle.DropDownList Then
+                                D_STM_WIT.WriteLine(.Name & "," & CStr(.SelectedIndex))
+                            ElseIf .DropDownStyle = ComboBoxStyle.DropDown Then
+                                D_STM_WIT.WriteLine(.Name & "," & .Text)
+                            End If
+                            '
+                        Case "CheckBox", "GcCheckBox"
+                            D_STM_WIT.WriteLine(.Name & "," & .Checked)
+                        Case Else
+                    End Select
+                End With
             Next
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
+        Finally
+            If Not (D_STM_WIT Is Nothing) Then
+                D_STM_WIT.Flush()
+                D_STM_WIT.Close()
+                '
+                D_STM_WIT = Nothing
+            End If
+        End Try
+EXIT_FUNCTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾊﾟﾗﾒｰﾀ保存
+    '*
+    '*  引数　　：1.ﾌｫｰﾑ
+    '*            2.ﾒｯｾｰｼﾞ(TabControl)
+    '*            3.ﾌｧｲﾙ名
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_SAV_HIS(ByRef P1 As Object, ByRef P2 As GrapeCity.Win.Containers.GcTabControl, ByVal P3 As String)
+        '
+        Dim D_CNT As Integer = 0
+        Dim D_DIR As String = ""
+        Dim D_FLD As String = ""
+        Dim D_FIL As String = ""
+        Dim D_MSG As String = ""
+        Dim D_DTE As String = ""
+        Dim D_STM_WIT As StreamWriter
+        '
+        Try
+            D_DIR = C_DIR_RPT
+            D_FLD = Application.StartupPath & "\" & D_DIR & "\" & C_COM_COD & "_" & C_USR_IDS
+            D_FIL = D_FLD & "\" & P3 & "_his" & C_FIL_PRM_EXN
+            '
+            If Not Directory.Exists(D_FLD) Then Directory.CreateDirectory(D_FLD)
+            '
+            D_STM_WIT = New StreamWriter(D_FIL, False, System.Text.Encoding.Default)
+            '
+            If P2.TabPages.Count > 0 Then
+                For i = 0 To P2.TabPages.Count - 1
+                    For Each ctl In P2.TabPages(i).Controls
+                        If TypeName(ctl).Equals("GcTextBox") Then
+                            With ctl
+                                If Not .Text.Equals("") Then
+                                    D_CNT += 1
+                                    If D_CNT > 3 Then GoTo END_FUNCTION
+                                    '
+                                    If P2.TabPages(i).Text.Equals("ステータス") Then
+                                        D_DTE = Format(Now(), "yy/MM/dd HH:mm")
+                                    Else
+                                        D_DTE = P2.TabPages(i).Text
+                                    End If
+                                    '
+                                    D_MSG &= vbVerticalTab & "[" & D_DTE & "]" & vbVerticalTab &
+                                             .TEXT &
+                                             vbVerticalTab & "[newline]" & vbVerticalTab
+
+                                End If
+                            End With
+                        End If
+                    Next
+                Next
+END_FUNCTION:
+                If Not D_MSG.Equals("") Then D_STM_WIT.WriteLine(D_MSG)
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
         Finally
             If Not (D_STM_WIT Is Nothing) Then
                 D_STM_WIT.Flush()
@@ -835,77 +1157,162 @@ EXIT_FUNCTION:
             '
             D_STM_RDR = New StreamReader(Application.StartupPath & "\" & D_DIR & "\" & C_COM_COD & "_" & C_USR_IDS & "\" & P3 & C_FIL_PRM_EXN, System.Text.Encoding.Default)
             '
-            For Each P1 In P1.Controls
-                Select Case TypeName(P1)
-                    Case "TextBox", "Edit", "Mask", "Number", "Date"
-                        If Not P1.Name.Equals("TXT_LOG") Then
-                            If D_STM_RDR.Peek <> -1 Then
-                                D_DAT = D_STM_RDR.ReadLine()
-                                D_POS = D_DAT.IndexOf(",")
-                                D_NAM = Mid(D_DAT, 1, D_POS)
-                                D_VAL = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
-                                '
-                                '↓ ADD 2008/05/01
-                                If TypeName(P1).Equals("Date") Then
-                                    If IsDate(D_VAL) Then
-                                        If P1.FORMAT.PATTERN.Equals("yy/MM") Then
-                                            D_VAL = D_VAL + "/01"
+            For Each cTl In P1.Controls
+                With cTl
+                    Select Case TypeName(cTl)
+                        Case "TextBox", "Edit", "Mask", "Number", "Date", "GcTextBox", "GcMask", "GcNumber", "GcDate"
+                            If Not .Name.Equals("TXT_LOG") Then
+                                If D_STM_RDR.Peek <> -1 Then
+                                    D_DAT = D_STM_RDR.ReadLine()
+                                    D_POS = D_DAT.IndexOf(",")
+                                    D_NAM = Mid(D_DAT, 1, D_POS)
+                                    D_VAL = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
+                                    '
+                                    '↓ ADD 2008/05/01
+                                    If TypeName(P1).Equals("Date") Then
+                                        If IsDate(D_VAL) Then
+                                            If .FORMAT.PATTERN.Equals("yy/MM") Then
+                                                D_VAL = D_VAL + "/01"
+                                            End If
+                                            D_VAL = Format(CDate(D_VAL), .Format.Pattern)
                                         End If
-                                        D_VAL = Format(CDate(D_VAL), P1.Format.Pattern)
+                                    End If
+                                    '↑ ADD 2008/05/01
+                                    '
+                                    If .NAME.Equals(D_NAM) Then
+                                        .TEXT = D_VAL
                                     End If
                                 End If
-                                '↑ ADD 2008/05/01
-                                '
-                                If P1.NAME.Equals(D_NAM) Then
-                                    P1.TEXT = D_VAL
+                            End If
+                            '
+                        Case "Label", "GcLabel"
+                            If Mid(.NAME, 1, 4).Equals("DSP_") Then
+                                If D_STM_RDR.Peek <> -1 Then
+                                    D_DAT = D_STM_RDR.ReadLine()
+                                    D_POS = D_DAT.IndexOf(",")
+                                    D_NAM = Mid(D_DAT, 1, D_POS)
+                                    D_VAL = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
+                                    '
+                                    If .NAME.Equals(D_NAM) Then
+                                        .TEXT = D_VAL
+                                    End If
                                 End If
                             End If
-                        End If
-                    Case "Label"
-                        If Mid(P1.NAME, 1, 4).Equals("DSP_") Then
+                            '
+                        Case "Combo", "GcComboBox"
                             If D_STM_RDR.Peek <> -1 Then
                                 D_DAT = D_STM_RDR.ReadLine()
                                 D_POS = D_DAT.IndexOf(",")
                                 D_NAM = Mid(D_DAT, 1, D_POS)
                                 D_VAL = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
                                 '
-                                If P1.NAME.Equals(D_NAM) Then
-                                    P1.TEXT = D_VAL
+                                If .NAME.Equals(D_NAM) Then
+                                    If .DropDownStyle = ComboBoxStyle.DropDownList Then
+                                        .SelectedIndex = D_VAL
+                                    ElseIf .DropDownStyle = ComboBoxStyle.DropDown Then
+                                        .TEXT = D_VAL
+                                    End If
                                 End If
                             End If
-                        End If
-                    Case "Combo"
-                        If D_STM_RDR.Peek <> -1 Then
-                            D_DAT = D_STM_RDR.ReadLine()
-                            D_POS = D_DAT.IndexOf(",")
-                            D_NAM = Mid(D_DAT, 1, D_POS)
-                            D_VAL = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
                             '
-                            If P1.NAME.Equals(D_NAM) Then
-                                If P1.DropDownStyle = ComboBoxStyle.DropDownList Then
-                                    P1.SelectedIndex = D_VAL
-                                ElseIf P1.DropDownStyle = ComboBoxStyle.DropDown Then
-                                    P1.TEXT = D_VAL
+                        Case "CheckBox", "GcCheckBox"
+                            If D_STM_RDR.Peek <> -1 Then
+                                D_DAT = D_STM_RDR.ReadLine()
+                                D_POS = D_DAT.IndexOf(",")
+                                D_NAM = Mid(D_DAT, 1, D_POS)
+                                D_VAL = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
+                                '
+                                If .NAME.Equals(D_NAM) Then
+                                    .Checked = D_VAL
                                 End If
                             End If
-                        End If
-                    Case "CheckBox"
-                        If D_STM_RDR.Peek <> -1 Then
-                            D_DAT = D_STM_RDR.ReadLine()
-                            D_POS = D_DAT.IndexOf(",")
-                            D_NAM = Mid(D_DAT, 1, D_POS)
-                            D_VAL = Mid(D_DAT, D_POS + 2, D_DAT.Length - 1)
-                            '
-                            If P1.NAME.Equals(D_NAM) Then
-                                P1.Checked = D_VAL
-                            End If
-                        End If
-                    Case Else
-                End Select
+                        Case Else
+                    End Select
+                End With
             Next
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
+        Finally
+            If Not (D_STM_RDR Is Nothing) Then
+                D_STM_RDR.Close()
+                '
+                D_STM_RDR = Nothing
+            End If
+        End Try
+EXIT_FUNCTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾊﾟﾗﾒｰﾀ読込
+    '*
+    '*  引数　　：1.ﾌｫｰﾑ
+    '*            2.ﾒｯｾｰｼﾞ(TabControl)
+    '*            3.ﾌｧｲﾙ名
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_LOD_HIS(ByRef P1 As Object, ByRef P2 As GrapeCity.Win.Containers.GcTabControl, ByVal P3 As String)
+        '
+        Dim D_CNT As Integer
+        Dim D_DIR As String = ""
+        Dim D_FLD As String = ""
+        Dim D_FIL As String = ""
+        Dim D_DAT As String = ""
+        Dim D_DTE As String = ""
+        Dim D_MSG As String = ""
+        Dim D_CRL As String = vbVerticalTab & "[newline]" & vbVerticalTab
+        Dim D_TXT As String()
+        Dim D_STM_RDR As StreamReader
+        '
+        Try
+            D_DIR = C_DIR_RPT
+            D_FLD = Application.StartupPath & "\" & D_DIR & "\" & C_COM_COD & "_" & C_USR_IDS
+            D_FIL = D_FLD & "\" & P3 & "_his" & C_FIL_PRM_EXN
+            '
+            If Not File.Exists(D_FIL) Then GoTo EXIT_FUNCTION
+            '
+            D_STM_RDR = New StreamReader(D_FIL, System.Text.Encoding.Default)
+            '
+            If D_STM_RDR.Peek <> -1 Then
+                D_DAT = D_STM_RDR.ReadToEnd
+                '
+                D_TXT = D_DAT.Split(D_CRL)
+                '
+                If D_TXT.Length > 0 Then
+                    D_CNT = 1
+                    For i = 0 To D_TXT.Length - 1
+                        If D_CNT > P2.TabPages.Count - 1 Then Exit For
+                        '
+                        If i + 1 > D_TXT.Length - 1 Then Exit For
+                        '
+                        D_DTE = D_TXT(i + 1).Replace("[", "").Replace("]", "")
+                        '
+                        If i + 2 > D_TXT.Length - 1 Then Exit For
+                        '
+                        D_MSG = D_TXT(i + 2) : i += 3
+                        '
+                        If Not D_MSG.Equals("") Then
+                            P2.TabPages(D_CNT).Text = D_DTE
+                            P2.TabPages(D_CNT).Visible = True
+                            '
+                            For Each ctl In P2.TabPages(D_CNT).Controls
+                                If TypeName(ctl).Equals("GcTextBox") Then
+                                    With ctl
+                                        .Text = D_MSG : Exit For
+                                    End With
+                                End If
+                            Next
+                            '
+                            D_CNT += 1
+                        End If
+                    Next
+                End If
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
         Finally
             If Not (D_STM_RDR Is Nothing) Then
                 D_STM_RDR.Close()
@@ -944,7 +1351,7 @@ EXIT_FUNCTION:
             If D_STM_RDR.Peek <> -1 Then D_RTN(1) = D_STM_RDR.ReadLine()
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             If Not (D_STM_RDR Is Nothing) Then
                 D_STM_RDR.Close()
@@ -977,7 +1384,7 @@ EXIT_FUNCTION:
             D_STM_WIT.WriteLine(P2)
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             If Not (D_STM_WIT Is Nothing) Then
                 D_STM_WIT.Flush()
@@ -1133,9 +1540,8 @@ SUB_EXIT:
                 Next
                 P1.SelectedIndex = P3
             End If
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             D_TBL.Clear()
         End Try
@@ -1166,11 +1572,8 @@ SUB_EXIT:
                 Next
                 P1.SelectedIndex = P3
             End If
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         Exit Sub
@@ -1202,9 +1605,7 @@ SUB_EXIT:
             '
             P1.Text = Format(FNC_CNV_NUL(P2, Nothing), D_FMT)
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         Exit Sub
@@ -1236,9 +1637,7 @@ SUB_EXIT:
                 P1.SelectionStart = P2
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         FNC_CHK_CMB_TXT = P1
@@ -1260,14 +1659,12 @@ SUB_EXIT:
         '
         Try
             D_RTN = P1 & "_" & Format(Now(), "yyMMdd_HHmmss")
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         FNC_CNV_FIL_NAM = D_RTN
+        '
         Exit Function
     End Function
 
@@ -1281,19 +1678,20 @@ SUB_EXIT:
     '*
     '**************************************************************************************************************
     Public Shared Function FNC_PRV_INS() As Boolean
+        '
         Dim D_RTN As Boolean = False
+        '
         Try
             If UBound(Diagnostics.Process.GetProcessesByName(Diagnostics.Process.GetCurrentProcess.ProcessName)) > 0 Then
                 D_RTN = True
             End If
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         FNC_PRV_INS = D_RTN
+        '
         Exit Function
     End Function
 
@@ -1310,11 +1708,13 @@ SUB_EXIT:
     '*
     '**************************************************************************************************************
     Public Shared Function FNC_BYT_DAT(ByVal P1 As Object, ByVal P2 As String, ByVal P3 As Integer, ByVal P4 As Byte) As String
-        Dim D_RTN As String
+        '
         Dim I As Integer
+        Dim D_RTN As String
         Dim D_STR As String
         Dim D_CHR As String
         Dim D_LEN As Integer = 1
+        '
         Try
             D_STR = CStr(utl_Com.FNC_CNV_NUL(P1, ""))
             '
@@ -1354,12 +1754,11 @@ SUB_EXIT:
             Next
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         FNC_BYT_DAT = D_RTN
+        '
         Exit Function
     End Function
 
@@ -1387,12 +1786,11 @@ SUB_EXIT:
             D_RTN = FNC_BYT_DAT(D_RTN, "", P2, 1)
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         FNC_GET_1ST_STR = D_RTN
+        '
         Exit Function
     End Function
 
@@ -1408,15 +1806,16 @@ SUB_EXIT:
     '*
     '**************************************************************************************************************
     Public Shared Function FNC_CNV_STR(ByVal P1 As String, ByVal P2 As Integer, ByVal P3 As Integer) As String
-        Dim D_RTN As String = ""
-        Dim I As Integer = 0
         '
+        Dim I As Integer = 0
+        Dim D_RTN As String = ""
         Dim D_LIN As Integer = 1 '行数
         Dim D_BEM As Integer = 0 '桁数
         Dim D_BFR_CR As Boolean = False '前回改行
         Dim D_BEM_MAX_CR As Boolean = False '
         Dim D_CHR As String = "" '処理文字
         Dim D_DAT As String = ""
+        '
         Try
             If (IsDBNull(P1) OrElse IsNothing(P1) OrElse (P1.Equals(""))) Then
                 GoTo SUB_EXIT
@@ -1469,15 +1868,13 @@ SUB_EXIT:
                     Exit For
                 End If
             Next
+            '
             If Not D_DAT.Equals("") Then
                 D_RTN = D_RTN & D_DAT & Chr(13) & Chr(10)
             End If
             D_RTN = Left(D_RTN, Len(D_RTN) - 2)
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         FNC_CNV_STR = D_RTN
@@ -1496,15 +1893,16 @@ SUB_EXIT:
     '*
     '**************************************************************************************************************
     Public Shared Function FNC_GET_LIN(ByVal P1 As String, ByVal P2 As Integer, ByVal P3 As Integer) As String
-        Dim D_RTN As String = ""
-        Dim I As Integer = 0
         '
+        Dim I As Integer = 0
+        Dim D_RTN As String = ""
         Dim D_LIN As Integer = 1
         Dim D_BEM As Integer = 0
         Dim D_FND As Boolean = False
-        Dim D_BFR_CR As Boolean = False
         Dim D_CHR As String = ""
         Dim D_DAT As String = ""
+        Dim D_BFR_CR As Boolean = False
+        '
         Try
             If IsDBNull(P1) OrElse IsNothing(P1) Then
                 GoTo SUB_EXIT
@@ -1540,9 +1938,9 @@ SUB_EXIT:
                 Else
                     If D_BFR_CR Then
                         D_BFR_CR = False
-                    Else                                '一行決定
+                    Else                       '一行決定
                         D_BFR_CR = True
-                        If (D_LIN = P2) Then        '取得したい行
+                        If (D_LIN = P2) Then   '取得したい行
                             D_FND = True
                             Exit For
                         End If
@@ -1558,12 +1956,11 @@ SUB_EXIT:
             '
             D_RTN = D_DAT
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
 SUB_EXIT:
         FNC_GET_LIN = D_RTN
+        '
         Exit Function
     End Function
 
@@ -1578,18 +1975,24 @@ SUB_EXIT:
     '*
     '**************************************************************************************************************
     Public Shared Function FNC_CNF_NUM(ByVal P1 As Decimal, ByVal P2 As Integer) As Decimal
+        '
+        Dim t As Decimal
+        Dim D_RTN As Decimal
+        '
         Try
-            Dim t As Decimal
             t = 10 ^ Math.Abs(P2)
+            '
             If P2 > 0 Then
-                FNC_CNF_NUM = Int(P1 * t + 0.5) / t
+                D_RTN = Int(P1 * t + 0.5) / t
             Else
-                FNC_CNF_NUM = Int(P1 / t + 0.5) * t
+                D_RTN = Int(P1 / t + 0.5) * t
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNTION:
+        Return D_RTN
+        '
         Exit Function
     End Function
 
@@ -1602,7 +2005,8 @@ EXIT_FUNTION:
     '*  戻り値　：
     '*
     '**************************************************************************************************************
-    Public Shared Function FNC_FRM_CLR(ByRef P1 As Object)
+    Public Shared Sub FNC_FRM_CLR(ByRef P1 As Object)
+        '
         Try
             Select Case C_COM_COD
                 Case 1 : P1.BackColor = C_COM_CLR_001
@@ -1618,11 +2022,11 @@ EXIT_FUNTION:
             End Select
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNTION:
-        Exit Function
-    End Function
+        Exit Sub
+    End Sub
 
     '**************************************************************************************************************
     '*
@@ -1634,6 +2038,7 @@ EXIT_FUNTION:
     '*
     '**************************************************************************************************************
     Public Shared Sub FNC_ICO_INT()
+        '
         Try
             C_ICO_FIL(0) = System.Configuration.ConfigurationManager.AppSettings("ICO_FIL01")
             C_ICO_FIL(1) = System.Configuration.ConfigurationManager.AppSettings("ICO_FIL02")
@@ -1643,7 +2048,7 @@ EXIT_FUNTION:
             C_ICO_FIL(5) = System.Configuration.ConfigurationManager.AppSettings("ICO_FIL06")
             C_ICO_FIL(6) = System.Configuration.ConfigurationManager.AppSettings("ICO_FIL06")
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNTION:
         Exit Sub
@@ -1664,15 +2069,18 @@ EXIT_FUNTION:
         '
         Try
             If utl_Com.C_COM_COD = 0 Then GoTo EXIT_FUNTION
-            If C_ICO_FIL(utl_Com.C_COM_COD - 1).Equals("") Then GoTo EXIT_FUNTION
             '
-            CType(P1, System.Windows.Forms.Form).Icon = New System.Drawing.Icon(Application.StartupPath & "\" & C_ICO_FIL(utl_Com.C_COM_COD - 1))
+            'アイコンファイルは実質使用していないため、新システムでは除外
+            '
+            'If C_ICO_FIL(utl_Com.C_COM_COD - 1).Equals("") Then GoTo EXIT_FUNTION
+            ''
+            'CType(P1, System.Windows.Forms.Form).Icon = New System.Drawing.Icon(Application.StartupPath & "\" & C_ICO_FIL(utl_Com.C_COM_COD - 1))
             '
             'ﾊﾞｰｼﾞｮﾝ情報追加
+            'ﾊﾞｰｼﾞｮﾝ情報追加
             P1.Text &= "／" & C_APP_VER & C_APP_UPD
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNTION:
         Exit Sub
@@ -1808,7 +2216,7 @@ EXIT_FUNTION:
             '
             D_RTN = True
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         Finally
             utl_Com.P_FRM_WIT.Hide()
             '
@@ -1825,7 +2233,6 @@ EXIT_FUNTION:
                 D_STM = Nothing
             End If
         End Try
-        '
 EXIT_FUNCTION:
         FNC_FNB_FIL = D_RTN
         '
@@ -1841,20 +2248,19 @@ EXIT_FUNCTION:
     '*  戻り値　：運用ﾚﾍﾞﾙ配列
     '*
     '*********************************************************************************************************
-    Public Shared Sub FNC_GET_UES_LVL(ByRef P1 As Form)
+    Public Shared Function FNC_GET_UES_LVL(ByRef P1 As Form, ByRef P2 As String) As Boolean
         '
         Dim I As Integer = 0
-        Dim D_RTN(7) As Integer
-        Dim D_GET As Boolean = False
+        Dim D_RTN As Boolean = False
         Dim D_IDS As String = ""
+        Dim D_GET As Boolean = False
+        Dim D_STS(7) As Integer
         Dim D_STT_OPT As Integer
         Dim D_END_OPT As Integer
         '
         Try
-            If IsNothing(P_LVL_TBL) Then GoTo EXIT_FUNCTION
-            If P_LVL_TBL.Rows.Count <= 0 Then GoTo EXIT_FUNCTION
-            'ID取得
-            '例外判定
+            'ID取得 / 例外判定
+            '
             If P1.Name.Equals("Frm_ER305_EX") OrElse
                P1.Name.Equals("Frm_SU003_OLD") OrElse
                P1.Name.Equals("Frm_CR700_OLD") Then
@@ -1864,52 +2270,64 @@ EXIT_FUNCTION:
                 D_STT_OPT = (P1.Name.IndexOf("_") + 1)
                 D_END_OPT = P1.Name.IndexOf("_", D_STT_OPT)
             End If
+            '
             If D_END_OPT = -1 Then
                 D_END_OPT = P1.Name.Length
             End If
+            '
             D_IDS = P1.Name.Substring(D_STT_OPT, (D_END_OPT - D_STT_OPT))
+            '
+            If IsNothing(P_LVL_TBL) Then GoTo EXIT_FUNCTION
+            If P_LVL_TBL.Rows.Count <= 0 Then GoTo EXIT_FUNCTION
+            '
             '初期化
+            '
             For I = 0 To 6 Step 1
-                D_RTN(I) = 0
+                D_STS(I) = 0
             Next
             '
             '機能ID検索
+            '
             For I = 0 To P_LVL_TBL.Rows.Count - 1 Step 1
                 If CStr(utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("機能ID"), "")).Equals(D_IDS) Then
                     D_GET = True
+                    '
                     '機能権限属性出力
-                    D_RTN(0) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("機能稼動区分"), 0)
-                    D_RTN(1) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("新規処理区分"), 0)
-                    D_RTN(2) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("修正処理区分"), 0)
-                    D_RTN(3) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("削除処理区分"), 0)
-                    D_RTN(4) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("検索処理区分"), 0)
-                    D_RTN(5) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("出力処理区分"), 0)
-                    D_RTN(6) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("更新処理区分"), 0)
+                    '
+                    D_STS(0) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("機能稼動区分"), 0)
+                    D_STS(1) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("新規処理区分"), 0)
+                    D_STS(2) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("修正処理区分"), 0)
+                    D_STS(3) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("削除処理区分"), 0)
+                    D_STS(4) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("検索処理区分"), 0)
+                    D_STS(5) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("出力処理区分"), 0)
+                    D_STS(6) = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("更新処理区分"), 0)
                     '
                     '画面ﾀｲﾄﾙ設定
-                    P1.Text = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("機能名称"), "") & "／" & D_IDS
+                    '
+                    P2 = utl_Com.FNC_CNV_NUL(P_LVL_TBL.Rows(I).Item("機能名称"), "") & "／" & D_IDS
+                    '
                     GoTo EXIT_FUNCTION
                 End If
             Next
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
-        Finally
-            '
+            FNC_ERR_RTN(ex)
         End Try
-        '
 EXIT_FUNCTION:
         If Not D_GET Then
-            MsgBox("ID：" & D_IDS & "：" & P1.Text & vbCrLf & vbCrLf &
-                   "該当する機能制御情報が存在しませんでした", MsgBoxStyle.Exclamation, "運用権限確認")
-            D_RTN = Nothing
-            P1.Close()
+            MsgBox("ID：" & D_IDS & "：" & P1.Text & vbCrLf & vbCrLf & "該当する機能制御情報が存在しませんでした", MsgBoxStyle.Exclamation, "運用権限確認")
+            '
+            D_STS = Nothing
+            '
+            'P1.Close()
+        Else
+            D_RTN = True
         End If
+        P_USE_LVL = D_STS
         '
-        P_USE_LVL = D_RTN
+        Return D_RTN
         '
-        Exit Sub
-    End Sub
+        Exit Function
+    End Function
 
     '*********************************************************************************************************
     '*
@@ -1942,7 +2360,7 @@ EXIT_FUNCTION:
                 MsgBox(D_MSG & "処理は出来ません", MsgBoxStyle.Exclamation, "運用権限確認")
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_CHK_AUD_LVL = D_RTN
@@ -1981,7 +2399,7 @@ EXIT_FUNCTION:
             End If
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_CHK_RPT_LVL = D_RTN
@@ -2013,7 +2431,7 @@ EXIT_FUNCTION:
                 D_RTN = "1.プリンター、2.プレビュー、3.ＰＤＦ"
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_RPT_LBL = D_RTN
@@ -2040,7 +2458,7 @@ EXIT_FUNCTION:
                 D_RTN = True
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_CHK_UPD_LVL = D_RTN
@@ -2105,7 +2523,7 @@ EXIT_FUNCTION:
             End If
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_FND_XID = D_RTN
@@ -2139,9 +2557,8 @@ EXIT_FUNCTION:
             Else
                 GoTo EXIT_FUNCTION
             End If
-            '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -2158,12 +2575,12 @@ EXIT_FUNCTION:
     '*  戻り値　：検索結果ﾒｯｾｰｼﾞ
     '*
     '*********************************************************************************************************
-    Public Shared Function FNC_FCS_XID(ByRef P1 As System.Windows.Forms.ListView, ByRef P2 As DataTable, ByRef P3 As Integer) As String
+    Public Shared Function FNC_FCS_XID(ByRef P1 As System.Windows.Forms.DataGridView, ByRef P2 As DataTable, ByRef P3 As Integer) As String
         '
         Dim D_RTN As String = ""
         '
         Try
-            If P1.Columns(1).Text.Equals("XID") Then
+            If P1.Columns(1).HeaderText.Equals("XID") Then
                 If P2.Rows.Count >= utl_Com.C_FND_CNT_1 Then
                     utl_Com.P_XID_FROM = utl_Com.FNC_CNV_NUL(P2.Rows(P2.Rows.Count - utl_Com.C_FND_CNT_1).Item("XID"), 0)
                     utl_Com.P_XID_TO = utl_Com.FNC_CNV_NUL(P2.Rows(P2.Rows.Count - 1).Item("XID"), 0)
@@ -2182,21 +2599,26 @@ EXIT_FUNCTION:
                 'ListView設定
                 If P3 >= 0 Then
                     'ｽｸﾛｰﾙﾊﾞｰ先頭に表示
-                    P1.EnsureVisible(P1.Items.Count - 1)
-                    P1.EnsureVisible(P3)
+                    '
+                    P1.FirstDisplayedScrollingRowIndex = 0
+                    'P1.EnsureVisible(P1.Items.Count - 1)
+                    'P1.EnsureVisible(P3)
+                    '
                     'ListView選択/ﾌｫｰｶｽ
+                    '
                     P1.Select()
-                    P1.Items(P3).Selected = True
-                    P1.Items(P3).Focused = True
+                    P1.Rows(P3).Selected = True
+                    'P1.Items(P3).Focused = True
                 Else
                     'ListView選択/ﾌｫｰｶｽ
+                    '
                     P1.Select()
-                    P1.Items(0).Selected = True
-                    P1.Items(0).Focused = True
+                    P1.Rows(0).Selected = True
+                    'P1.Items(0).Focused = True
                 End If
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_FCS_XID = D_RTN
@@ -2253,7 +2675,7 @@ EXIT_FUNCTION:
                 End If
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         FNC_FCS_XID_BIG = D_RTN
@@ -2274,55 +2696,75 @@ EXIT_FUNCTION:
     '*  戻り値　：なし
     '*
     '*********************************************************************************************************
-    Public Shared Sub FNC_STP_XID(ByVal P1 As String, ByRef P2 As System.Windows.Forms.ListView, ByRef P3 As DataTable, ByRef P4 As Integer, ByRef P5 As Object)
+    Public Shared Sub FNC_STP_XID(ByVal P1 As String, ByRef P2 As System.Windows.Forms.DataGridView, ByRef P3 As DataTable, ByRef P4 As Integer, ByRef P5 As Object)
         '
         Try
             If (P3.Rows.Count <> 0) Then
                 '
                 '[XID]が存在する場合↓
-                If P2.Columns(1).Text.Equals("XID") Then
+                '
+                If P2.Columns(1).HeaderText.Equals("XID") Then
                     If P3.Rows.Count > utl_Com.C_FND_CNT_2 Then
                         If P1.Equals("P") Then '【前】
                             If 0 < (P4 - utl_Com.C_FND_CNT_2) Then
+                                '
                                 'ｽｸﾛｰﾙﾊﾞｰ先頭に表示
-                                P2.EnsureVisible(P2.Items.Count - 1)
-                                P2.EnsureVisible(P4 - utl_Com.C_FND_CNT_2)
+                                '
+                                P2.FirstDisplayedScrollingRowIndex = 0
+                                'P2.EnsureVisible(P2.Items.Count - 1)
+                                'P2.EnsureVisible(P4 - utl_Com.C_FND_CNT_2)
+                                '
                                 'ListView選択/ﾌｫｰｶｽ
+                                '
                                 P2.Select()
-                                P2.Items(P4 - utl_Com.C_FND_CNT_2).Selected = True
-                                P2.Items(P4 - utl_Com.C_FND_CNT_2).Focused = True
+                                P2.Rows(P4 - utl_Com.C_FND_CNT_2).Selected = True
+                                'P2.Items(P4 - utl_Com.C_FND_CNT_2).Focused = True
                                 '
                                 P4 = P4 - utl_Com.C_FND_CNT_2
                             Else
                                 'ｽｸﾛｰﾙﾊﾞｰ先頭に表示
-                                P2.EnsureVisible(P2.Items.Count - 1)
-                                P2.EnsureVisible(0)
+                                '
+                                P2.FirstDisplayedScrollingRowIndex = 0
+                                'P2.EnsureVisible(P2.Items.Count - 1)
+                                'P2.EnsureVisible(0)
+                                '
                                 'ListView選択/ﾌｫｰｶｽ
+                                '
                                 P2.Select()
-                                P2.Items(0).Selected = True
-                                P2.Items(0).Focused = True
+                                P2.Rows(0).Selected = True
+                                'P2.Items(0).Focused = True
                                 '
                                 P4 = 0
                             End If
+                            '
                         ElseIf P1.Equals("N") Then '【次】
                             If P3.Rows.Count <= (P4 + utl_Com.C_FND_CNT_2) Then
+                                '
                                 'ｽｸﾛｰﾙﾊﾞｰ先頭に表示
-                                P2.EnsureVisible(P2.Items.Count - 1)
-                                P2.EnsureVisible(P3.Rows.Count - 1)
+                                '
+                                P2.FirstDisplayedScrollingRowIndex = 0
+                                'P2.EnsureVisible(P2.Items.Count - 1)
+                                'P2.EnsureVisible(P3.Rows.Count - 1)
+                                '
                                 'ListView選択/ﾌｫｰｶｽ
+                                '
                                 P2.Select()
-                                P2.Items(P3.Rows.Count - 1).Selected = True
-                                P2.Items(P3.Rows.Count - 1).Focused = True
+                                P2.Rows(P3.Rows.Count - 1).Selected = True
+                                'P2.Items(P3.Rows.Count - 1).Focused = True
                                 '
                                 P4 = P3.Rows.Count - 1
                             Else
                                 'ｽｸﾛｰﾙﾊﾞｰ先頭に表示
-                                P2.EnsureVisible(P2.Items.Count - 1)
-                                P2.EnsureVisible(P4 + utl_Com.C_FND_CNT_2)
+                                '
+                                P2.FirstDisplayedScrollingRowIndex = 0
+                                'P2.EnsureVisible(P2.Items.Count - 1)
+                                'P2.EnsureVisible(P4 + utl_Com.C_FND_CNT_2)
+                                '
                                 'ListView選択/ﾌｫｰｶｽ
+                                '
                                 P2.Select()
-                                P2.Items(P4 + utl_Com.C_FND_CNT_2).Selected = True
-                                P2.Items(P4 + utl_Com.C_FND_CNT_2).Focused = True
+                                P2.Rows(P4 + utl_Com.C_FND_CNT_2).Selected = True
+                                'P2.Items(P4 + utl_Com.C_FND_CNT_2).Focused = True
                                 '
                                 P4 = P4 + utl_Com.C_FND_CNT_2
                             End If
@@ -2334,7 +2776,7 @@ EXIT_FUNCTION:
             End If
             '
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -2369,7 +2811,7 @@ EXIT_FUNCTION:
             P3.Image = System.Drawing.Image.FromStream(D_IMG_STM)
             D_IMG_STM.Close()
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -2399,7 +2841,7 @@ EXIT_FUNCTION:
                 Kill(Application.StartupPath & "\" & C_DIR_IMG & "\*.*")
             End If
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -2436,7 +2878,7 @@ EXIT_FUNCTION:
             ' 破棄
             OpenFileDialog1.Dispose()
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -2469,7 +2911,7 @@ EXIT_FUNCTION:
             ' 破棄
             SaveFileDialog1.Dispose()
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNCTION:
         Exit Sub
@@ -2495,7 +2937,7 @@ EXIT_FUNCTION:
             C_PCT_FIL(5) = System.Configuration.ConfigurationManager.AppSettings("PCT_FIL06")
             C_PCT_FIL(6) = System.Configuration.ConfigurationManager.AppSettings("PCT_FIL06")
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNTION:
         Exit Sub
@@ -2520,10 +2962,331 @@ EXIT_FUNTION:
             '
             CType(P1, GrapeCity.ActiveReports.SectionReportModel.Picture).Image = New System.Drawing.Bitmap(Application.StartupPath & "\" & C_PCT_FIL(utl_Com.C_COM_COD - 1))
         Catch ex As Exception
-            utl_Com.FNC_ERR_RTN(ex)
+            FNC_ERR_RTN(ex)
         End Try
 EXIT_FUNTION:
         Exit Sub
     End Sub
+
+#End Region
+
+#Region " 各画面専用のユーザ情報 "
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾎｽﾄ名取得
+    '*
+    '*  引数　　：なし
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_USR_SET(ByRef P1 As UserInfo)
+        '
+        Try
+            P1.U_COM_COD = C_COM_COD
+            P1.U_COM_NAM = C_COM_NAM
+            P1.U_COM_NAM_SRT = C_COM_NAM_SRT
+            P1.U_PRT_COD = C_PRT_COD
+            P1.U_PRT_NAM = C_PRT_NAM
+            P1.U_BNC_COD = C_BNC_COD
+            P1.U_BNC_NAM = C_BNC_NAM
+            P1.U_BNC_NAM_SRT = C_BNC_NAM_SRT
+            P1.U_USE_PRT_COD = C_USE_PRT_COD
+            P1.U_USE_PRT_NAM = C_USE_PRT_NAM
+            P1.U_ACC_POD = C_ACC_POD
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNCTION:
+        Exit Sub
+    End Sub
+
+#End Region
+
+#Region " 各画面用のCtl_USR_IFO "
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾓｰﾄﾞﾗﾍﾞﾙ設定
+    '*
+    '*  引数　　：1.ﾓｰﾄﾞ
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_SET_IFO(ByRef P1 As UserInfo, ByRef P2 As GrapeCity.Win.Containers.GcTableLayoutContainer)
+        '
+        Try
+            If P2.Controls.Count >= 4 Then
+                For i = 0 To P2.Controls.Count - 1
+                    With P2.Controls(i)
+                        If .Name.Equals("LBL_処理事業所") Then
+                            .Text = P1.U_COM_NAM_SRT
+                            '
+                        ElseIf .Name.Equals("LBL_部") Then
+                            .Text = CStr(P1.U_PRT_COD) & ":" & P1.U_PRT_NAM
+                            '
+                        ElseIf .Name.Equals("LBL_支社") Then
+                            .Text = CStr(Format(P1.U_BNC_COD, "00")) & ":" & P1.U_BNC_NAM_SRT
+                            '
+                        End If
+                        '
+                        'ログインユーザは全画面共通とする
+                        '
+                        'ElseIf .Name.Equals("LBL_入力者") Then
+                        '    .Text = CStr(Format(utl_Com.C_USR_IDS, "0000000")) & ":" & utl_Com.C_USR_NAM
+                    End With
+                Next
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：ﾓｰﾄﾞﾗﾍﾞﾙ設定
+    '*
+    '*  引数　　：1.ﾓｰﾄﾞ
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_SET_MOD(ByVal P1 As String, ByRef P2 As GrapeCity.Win.Containers.GcTableLayoutContainer)
+        '
+        Dim D_BAK_CLR As Color
+        '
+        Try
+            If P2.Controls.Count >= 4 Then
+                For i = 0 To P2.Controls.Count - 1
+                    With P2.Controls(i)
+                        If .Name.Equals("LBL_MOD") Then
+                            Select Case P1
+                                Case "A" 'ADD
+                                    .Text = C_MOD_ADD_MSG : D_BAK_CLR = C_MOD_ADD_CLR
+                                    '
+                                Case "U" 'UPDATE
+                                    .Text = C_MOD_UPD_MSG : D_BAK_CLR = C_MOD_UPD_CLR
+                                    '
+                                Case "D" 'DELETE
+                                    .Text = C_MOD_DEL_MSG : D_BAK_CLR = C_MOD_DEL_CLR
+                                    '
+                                Case "F" 'FIND
+                                    .Text = C_MOD_FND_MSG : D_BAK_CLR = C_MOD_FND_CLR
+                                    '
+                                Case "R" 'REPORT
+                                    .Text = C_MOD_RPT_MSG : D_BAK_CLR = C_MOD_RPT_CLR
+                                    '
+                                Case "M" 'MENU
+                                    .Text = C_MOD_MNU_MSG : D_BAK_CLR = C_MOD_MNU_CLR
+                                    '
+                                Case "B" 'BACH
+                                    .Text = C_MOD_BAC_MSG : D_BAK_CLR = C_MOD_BAC_CLR
+                                    '
+                                Case "I" 'INQUIRY
+                                    .Text = C_MOD_INQ_MSG : D_BAK_CLR = C_MOD_INQ_CLR
+                                    '
+                                Case "AU" 'ADD & UPD
+                                    .Text = C_MOD_ADD_UPD_MSG : D_BAK_CLR = C_MOD_ADD_UPD_CLR
+                                    '
+                                Case Else
+                                    .Text = "" : D_BAK_CLR = Color.White
+                            End Select
+                            '
+                            If P2.ColumnCount > 9 Then P2.Columns(9).BackColor = D_BAK_CLR
+                            '
+                            Exit For
+                        End If
+                    End With
+                Next
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNTION:
+        Exit Sub
+    End Sub
+
+#End Region
+
+#Region " 各画面用のCtl_UPD_IFO "
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：削除ﾃﾞｰﾀ画面表記
+    '*
+    '*  引数　　：1.削除区分(1.有効、2.削除)
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_DSP_DEL(ByVal P1 As Integer, ByRef P2 As System.Windows.Forms.StatusStrip, ByRef P3 As GrapeCity.Win.Containers.GcTableLayoutContainer)
+        '
+        Dim D_TTL As String = ""
+        Dim C_MSG As String = "×削除データです"
+        Dim D_BAK_CLR As Color
+        Dim D_FNT_CLR As Color
+        '
+        Try
+            Select Case P1
+                Case 1
+                    D_BAK_CLR = C_BAK_ACT_CLR
+                    D_FNT_CLR = C_FNT_ACT_CLR
+                    D_TTL = "更新情報"
+                    '
+                    If P2.Items(0).Text.Equals(C_MSG) Then P2.Items(1).Text = ""
+                    '
+                Case 2
+                    D_BAK_CLR = C_BAK_DEL_CLR
+                    D_FNT_CLR = C_FNT_DEL_CLR
+                    D_TTL = "削除情報"
+                    '
+                    P2.Items(0).Text = C_MSG
+            End Select
+            '
+            If P3.Controls.Count >= 6 Then
+                For i = 0 To P3.Controls.Count - 1
+                    With P3.Controls(i)
+                        Select Case .Name
+                            Case "LBL_更新情報" : .Text = D_TTL
+                            Case "LBL_更新ユーザー情報" : .BackColor = D_BAK_CLR
+                            Case "LBL_更新日時" : .BackColor = D_BAK_CLR
+                                '
+                            Case "LBL_更新ユーザー情報" : .ForeColor = D_FNT_CLR
+                            Case "LBL_更新日時" : .ForeColor = D_FNT_CLR
+                        End Select
+                    End With
+                Next
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNCTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：削除ｽﾃｰﾀｽ設定
+    '*
+    '*  引数　　：なし
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_DEL_IFO(ByRef P1 As GrapeCity.Win.Containers.GcTableLayoutContainer)
+        '
+        Try
+            If P1.Controls.Count >= 6 Then
+                For i = 0 To P1.Controls.Count - 1
+                    With P1.Controls(i)
+                        If .Name.Equals("LBL_更新ユーザー情報") Then
+                            .Text = utl_Com.C_USR_IDS & ":" & utl_Com.C_USR_NAM & "(" & utl_Com.C_TMA_IPS & ")"
+                        ElseIf .Name.Equals("LBL_更新日時") Then
+                            .Text = Format(Now, "yy/MM/dd HH:mm")
+                        End If
+                    End With
+                Next
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNCTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：登録更新情報設定
+    '*
+    '*  引数　　：1.ﾃﾞｰﾀﾃｰﾌﾞﾙ
+    '*            ｵﾌﾟｼｮﾝ1.Rowｲﾝﾃﾞｯｸｽ
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_SET_IFO(ByRef P1 As GrapeCity.Win.Containers.GcTableLayoutContainer, ByVal P2 As DataTable, Optional ByVal OP2 As Integer = 0)
+        '
+        Dim D_登録ユーザー情報 As String = ""
+        Dim D_登録日時 As String = ""
+        Dim D_更新ユーザー情報 As String = ""
+        Dim D_更新日時 As String = ""
+        '
+        Try
+            If CStr(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録端末ID"), "")).Equals("") Then
+                D_登録ユーザー情報 = IIf(CStr(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録ユーザーID"), "0")).Equals("0"), "", Format(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録ユーザーID"), 0), "0000000") & ":") &
+                                              utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録ユーザー名"), "")
+            Else
+                D_登録ユーザー情報 = IIf(CStr(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録ユーザーID"), "0")).Equals("0"), "", Format(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録ユーザーID"), 0), "0000000") & ":") &
+                                              utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録ユーザー名"), "") & "(" &
+                                              utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録端末ID"), "") & ")"
+            End If
+            D_登録日時 = Format(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("登録日時"), Nothing), "yy/MM/dd HH:mm")
+            '
+            If CStr(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新端末ID"), "")).Equals("") Then
+                D_更新ユーザー情報 = IIf(CStr(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新ユーザーID"), "0")).Equals("0"), "", Format(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新ユーザーID"), 0), "0000000") & ":") &
+                                              utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新ユーザー名"), "")
+            Else
+                D_更新ユーザー情報 = IIf(CStr(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新ユーザーID"), "0")).Equals("0"), "", Format(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新ユーザーID"), 0), "0000000") & ":") &
+                                              utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新ユーザー名"), "") & "(" &
+                                              utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新端末ID"), "") & ")"
+            End If
+            D_更新日時 = Format(utl_Com.FNC_CNV_NUL(P2.Rows(OP2).Item("更新日時"), Nothing), "yy/MM/dd HH:mm")
+            '
+            If P1.Controls.Count >= 6 Then
+                For i = 0 To P1.Controls.Count - 1
+                    With P1.Controls(i)
+                        Select Case .Name
+                            Case "LBL_登録ユーザー情報" : .Text = D_登録ユーザー情報
+                            Case "LBL_登録日時" : .Text = D_登録日時
+                                '
+                            Case "LBL_更新ユーザー情報" : .Text = D_更新ユーザー情報
+                            Case "LBL_更新日時" : .Text = D_更新日時
+                        End Select
+                    End With
+                Next
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNTION:
+        Exit Sub
+    End Sub
+
+    '*********************************************************************************************************
+    '*
+    '*  処理概要：登録更新情報ｸﾘｱ
+    '*
+    '*  引数　　：なし
+    '*
+    '*  戻り値　：なし
+    '*
+    '*********************************************************************************************************
+    Public Shared Sub FNC_CLR_IFO(ByRef P1 As GrapeCity.Win.Containers.GcTableLayoutContainer)
+        '
+        Try
+            If P1.Controls.Count >= 6 Then
+                For i = 0 To P1.Controls.Count - 1
+                    With P1.Controls(i)
+                        If .Name.Equals("LBL_登録ユーザー情報") OrElse
+                           .Name.Equals("LBL_登録日時") OrElse
+                           .Name.Equals("LBL_更新ユーザー情報") OrElse
+                           .Name.Equals("LBL_更新日時") Then
+                            .Text = ""
+                        End If
+                    End With
+                Next
+            End If
+        Catch ex As Exception
+            FNC_ERR_RTN(ex)
+        End Try
+EXIT_FUNTION:
+        Exit Sub
+    End Sub
+
+#End Region
 
 End Class
